@@ -1,0 +1,29 @@
+@use './components/selection';
+@use './components/links';
+@use './components/headline';
+@use './pages/settings';
+@use './pages/home';
+
+* {
+    margin: 0;
+    cursor: default;
+    box-sizing: border-box;
+}
+
+button {
+    cursor: pointer;
+
+    * {
+        cursor: pointer;
+    }
+}
+
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+
+    * {
+        cursor: pointer;
+    }
+}

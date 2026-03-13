@@ -1,0 +1,178 @@
+@use '../utils/mixins' as mi;
+@use '../utils/color-palette' as cp;
+@use '../utils/fonts';
+
+
+.selection{
+    .title{
+        font-family: 'Almarai-Bold';
+        font-size: 24px;
+        color: cp.$primary-dark;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .radio_buttons{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        padding-left: 42px;
+    }
+}
+
+/* Customize the label (the container) */
+.radio {
+    font-size: 20px;
+    color: cp.$primary-dark;
+
+    display: inline-flex;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    * {
+        cursor: pointer;
+    }
+}
+
+/* Hide the browser's default radio button */
+.radio_input {
+    display: none;
+    // position: absolute;
+    // opacity: 0;
+    // cursor: pointer;
+    // height: 0;
+    // width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: cp.$light;
+    border-radius: 50%;
+    border: 3px solid cp.$primary-dark;
+}
+
+// /* When the radio button is checked, add a blue background */
+// input:checked ~ .checkmark {
+//     background-color: cp.$light;
+//     border: 3px solid cp.$primary-dark;
+// }
+
+// .container:hover input ~ .checkmark:after {
+//     display: block;
+// }
+
+// /* Create the indicator (the dot/circle - hidden when not checked) */
+// .checkmark:after {
+//     content: "";
+//     position: absolute;
+//     display: none;
+// }
+
+// /* Show the indicator (dot/circle) when checked */
+// input:checked ~ .checkmark:after {
+//     display: block;
+// }
+
+// .label {
+//     font-family: 'Almarai-Regular';
+// }
+
+// .container input:checked{
+//     font-family: 'Almarai-Regular';
+// }
+
+
+
+/* Style the indicator (dot/circle) */
+// .checkmark:after {
+//  	top: calc(50% - 3px);
+// 	left: calc(50% - 3px);
+// 	width: 6px;
+// 	height: 6px;
+// 	border-radius: 50%;
+// 	background: black;
+// }
+
+// /* The container */
+// .radio_button_container {
+//     font-family: 'Almarai-Regular';
+//     font-size: 20px;
+//     color: cp.$primary-dark;
+
+//     display: block;
+//     position: relative;
+//     padding-left: 35px;
+//     cursor: pointer;
+
+//     -webkit-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+// }
+
+// /* Hide the browser's default radio button */
+// .radio_button_container input {
+//   position: absolute;
+//   opacity: 0;
+//   cursor: pointer;
+// }
+
+// /* Create a custom radio button */
+// .checkmark {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   height: 20px;
+//   width: 20px;
+//   background-color: cp.$light;
+//   border-radius: 50%;
+//   border: 3px solid cp.$primary-dark;
+// }
+
+// /* On mouse-over, add a grey background color */
+// .radio_button_container:hover input ~ .checkmark {
+//   background-color: #ccc;
+// }
+
+// /* When the radio button is checked, add a blue background */
+// .radio_button_container input:checked ~ .checkmark {
+//   background-color: white;
+//   border: 2px solid black;
+// }
+
+// /* Create the indicator (the dot/circle - hidden when not checked) */
+// .checkmark:after {
+//   content: "";
+//   position: absolute;
+//   display: none;
+// }
+
+// /* Show the indicator (dot/circle) when checked */
+// .radio_button_container input:checked ~ .checkmark:after {
+//   display: block;
+// }
+
+// /* Style the indicator (dot/circle) */
+// .radio_button_container .checkmark:after {
+//  	top: calc(50% - 8px);
+// 	left: 50%;
+// 	width: 8px;
+// 	height: 8px;
+// 	border-radius: 50%;
+// 	background: black;
+// }

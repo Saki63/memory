@@ -1,0 +1,23 @@
+@mixin flex-center($g: 16px, $fd: row){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $g;
+    flex-direction: $fd;
+}
+
+@mixin flex-top($g: 16px, $ai: start){
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: $ai;
+    gap: $g;
+}
+
+@mixin flex-left($g: 16px, $jc: center){
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: $jc;
+    gap: $g;
+}

@@ -1,0 +1,18 @@
+@use '../utils/mixins' as mi;
+@use '../utils/color-palette' as cp;
+@use '../utils/fonts';
+
+.headline{
+    margin-bottom: 40px;
+
+    >h2{
+        margin-left: 24px;
+        font-family: 'RedRose-Bold';
+        font-size: 54px;
+        color: cp.$primary-dark;
+    }
+    >img{
+        position: relative;
+        bottom: 10px;
+    }
+}

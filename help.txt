@@ -1,0 +1,83 @@
+
+
+- Installieren
+-> Terminal: npm init -y
+--> erstellt package.json
+
+-> Terminal: npm install -D vite typescript
+--> -D: wird nur im development Bereich installiert
+--> node_modules wird erstellt mit vite und ts
+
+-> Terminal: tsc --init
+--> tsconfig.json wird erstellt
+
+- tsconfig.json anpassen
+-> aktuelle Datei ersetzen mit unten stehenden Code:
+
+    {
+        "compilerOptions": {
+            /* Sprache & Zielumgebung */
+            "target": "ESNext",                  // moderne Syntax, gut für Browser + Vite
+            "lib": ["ESNext", "DOM"],            // Browser-APIs und moderne JS-Funktionen
+
+
+            /* Module & Auflösung */
+            "module": "ESNext",                  // ES Modules für Vite/Rollup
+            "moduleResolution": "Bundler",       // spezielle Auflösung für Vite, ersetzt "node"
+            "isolatedModules": true,             // jede Datei wird wie ein Modul behandelt
+
+
+            /* Typprüfung */
+            "strict": true,                      // alle strikten Checks aktivieren
+            "skipLibCheck": true,                // schneller, da node_modules-Typen nicht geprüft werden
+            "noEmit": true,                      // keine JS-Ausgabe, Build übernimmt Vite
+
+
+            /* Sonstiges */
+            "esModuleInterop": true,             // bessere Import-Kompatibilität
+            "resolveJsonModule": true,           // erlaubt `import data from './data.json'`
+            "forceConsistentCasingInFileNames": true
+        },
+        "include": ["src"],                    // nur eigenen Code kompilieren
+        "exclude": ["node_modules", "dist"]    // keine Fremd- oder Build-Dateien prüfen
+    }
+
+
+- Package.json anpassen
+-> einfügen von unten stehenden Code in entsprechende Datei:
+
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc -noEmit && vite build",
+        "preview": "vite preview"
+    }
+
+
+- Ordner und Dateien erstellen
+--> index.html
+--> src/main.ts
+
+- SCSS Installieren
+-> Terminal: npm i -D sass
+--> installiert scss gleich mit
+
+
+- public-Ordner erstellen
+-> enthält alle Dateien, die nicht im build-Prozess geändert werden müssen
+-> z.B. Bilder, PDFs etc. (assets)
+
+
+- Umwandlung der Dateien in für den Browser lesbare Dateien
+-> Terminal: npm run build
+
+- Pfade für FTP-Server anpassen, wenn nicht die Dateien nicht auf root-Ebene liegen
+-> Datei erstellen mit dem Namen vite.config.ts
+-> Code einfügen:
+
+    import { defineConfig } from 'vite';
+
+    export default defineConfig({
+        base: "/projects/banana/"
+    });
+
+-> Pfad der in base steht anpassen

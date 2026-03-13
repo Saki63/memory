@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory/Settings</title>
+</head>
+<body>
+    <main class="settings_page">
+        <div class="settings_content">
+            <div class="headline">
+                <h2>Settings</h2>    
+                <img src="/assets/img/line_3.png" alt="Yellow line as text decoration of headline">            
+            </div>
+            <div class="settings_layout">
+                <!-- left -->
+                <section class="settings_left">
+                    <!-- theme -->
+                    <div class="selection">
+                        <div class="title">
+                            <img src="/assets/img/palette.png" alt="">
+                            <h4>Game themes</h4>
+                        </div>
+                        <div class="radio_buttons">
+                            <label for="radioId" class="radio">
+                                <input class="radio_input" type="radio" id="radioId" name="radio">
+                                <span class="checkmark"></span>
+                                Code vibes theme
+                            </label>
+                            <label for="radioId" class="radio">
+                                <input class="radio_input" type="radio" id="radioId" name="radio">
+                                <span class="checkmark"></span>
+                                Food theme
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- player -->
+                    <div class="selection">
+                        <div class="title">
+                            <img src="/assets/img/chess_pawn.png" alt="">
+                            <h4>Choose player</h4>
+                        </div>
+                        <div class="radio_buttons">
+                            <label for="radioId" class="radio">
+                                <input class="radio_input" type="radio" id="radioId" name="radio">
+                                <span class="checkmark"></span>
+                                Blue
+                            </label>
+                            <label for="radioId" class="radio">
+                                <input class="radio_input" type="radio" id="radioId" name="radio">
+                                <span class="checkmark"></span>
+                                Orange
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- board size -->
+                    <div class="selection">
+                        <div class="title">
+                            <img src="/assets/img/style.png" alt="">
+                            <h4>Board size</h4>
+                        </div>
+                        <div class="radio_buttons">
+                            <label for="radioId" class="radio">
+                                <input class="radio_input" type="radio" id="radioId" name="radio">
+                                <span class="checkmark"></span>
+                                16 cards
+                            </label>
+                            <label for="radioId" class="radio">
+                                <input class="radio_input" type="radio" id="radioId" name="radio">
+                                <span class="checkmark"></span>
+                                24 cards
+                            </label>
+                            <label for="radioId" class="radio">
+                                <input class="radio_input" type="radio" id="radioId" name="radio">
+                                <span class="checkmark"></span>
+                                36 cards
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <!-- right -->
+                <section class="settings_right">
+                    <img src="/assets/img/code_vibes_theme.png" alt="">
+                    <div class="choosen_settings_and_start_button">
+                        <div class="choosen_settings">
+                            <span>Game theme</span>
+                            <img src="/assets/img/line_6_slash.png" alt="">
+                            <span>Player</span>
+                            <img src="/assets/img/line_6_slash.png" alt="">
+                            <span>Board size</span>
+                        </div>
+                        <a class="start_btn primary_a" href="/pages/board.html">
+                            <img class="smart_display_icon" src="/assets/img/smart_display.png" alt="">
+                            <span>Start</span>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="../main.ts"></script>
+</body>
+</html>
