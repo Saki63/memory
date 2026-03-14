@@ -116,3 +116,64 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
         cursor: pointer;
     }
 }
+
+.d_none{
+    display: none;
+}
+
+.overlay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    width: 100%;
+    max-width: 100vw;
+
+    height: 100vh;
+    max-height: 100%;
+}
+
+.exit_dialog{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    max-width: 536px;
+    gap: 40px;
+    >span{
+        font-family: 'RedRose-Bold';
+        font-size: 32px;
+        color: black;
+        text-align: center;
+    }
+
+    >div{
+        display: flex;
+        gap: 16px;
+    }
+}
+
+.back_to_game_btn{
+    background-color: #66CFBC;
+    padding: 16px;
+    font-family: 'RedRose-Bold';
+    font-size: 20px;
+    color: white;
+    border: 2px solid #66CFBC;
+}
+
+.exit_link{
+    background-color: rgba(134, 233, 214, 0.14);
+    padding: 16px;
+    font-family: 'RedRose-Bold';
+    font-size: 20px;
+    color: #66CFBC;
+    border: 2px solid #66CFBC;
+}
