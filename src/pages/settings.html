@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory/Settings</title>
+    <script src="../scripts/classes/settings.ts"></script>
 </head>
-<body>
+<body onload="init()">
     <main class="settings_page">
         <div class="settings_content">
             <div class="headline">
@@ -13,76 +14,69 @@
                 <img src="/assets/img/line_3.png" alt="Yellow line as text decoration of headline">            
             </div>
             <div class="settings_layout">
-                <!-- left -->
                 <section class="settings_left">
-                    <!-- theme -->
                     <div class="selection">
                         <div class="title">
                             <img src="/assets/img/palette.png" alt="">
                             <h4>Game themes</h4>
                         </div>
                         <div class="radio_buttons">
-                            <label for="radioId" class="radio">
-                                <input class="radio_input" type="radio" id="radioId" name="radio">
-                                <span class="checkmark"></span>
-                                Code vibes theme
+                            <label onclick="changeTheme('code_vibes')" from="theme_code_vibes_id" class="radio">
+                                <input id="theme_code_vibes_id" type="radio" name="radio1">
+                                <span class="radio_custom"></span>
+                                <span class="text">Code vibes theme</span>
                             </label>
-                            <label for="radioId" class="radio">
-                                <input class="radio_input" type="radio" id="radioId" name="radio">
-                                <span class="checkmark"></span>
-                                Food theme
+                            <label onclick="changeTheme('food')" from="theme_food_id" class="radio">
+                                <input id="theme_food_id" type="radio" name="radio1">
+                                <span class="radio_custom"></span>
+                                <span class="text">Food theme</span>
                             </label>
                         </div>
                     </div>
-
-                    <!-- player -->
                     <div class="selection">
                         <div class="title">
                             <img src="/assets/img/chess_pawn.png" alt="">
                             <h4>Choose player</h4>
                         </div>
                         <div class="radio_buttons">
-                            <label for="radioId" class="radio">
-                                <input class="radio_input" type="radio" id="radioId" name="radio">
-                                <span class="checkmark"></span>
-                                Blue
+                            <label onclick="changePlayer('blue')" from="player_blue_id" class="radio">
+                                <input id="player_blue_id" type="radio" name="radio2" checked>
+                                <span class="radio_custom"></span>
+                                <span class="text">Blue</span>
                             </label>
-                            <label for="radioId" class="radio">
-                                <input class="radio_input" type="radio" id="radioId" name="radio">
-                                <span class="checkmark"></span>
-                                Orange
+                            <label onclick="changePlayer('orange')" from="player_orange_id" class="radio">
+                                <input id="player_orange_id" type="radio" name="radio2">
+                                <span class="radio_custom"></span>
+                                <span class="text">Orange</span>
                             </label>
                         </div>
                     </div>
-
-                    <!-- board size -->
                     <div class="selection">
                         <div class="title">
                             <img src="/assets/img/style.png" alt="">
                             <h4>Board size</h4>
                         </div>
                         <div class="radio_buttons">
-                            <label for="radioId" class="radio">
-                                <input class="radio_input" type="radio" id="radioId" name="radio">
-                                <span class="checkmark"></span>
-                                16 cards
+                            <label onclick="changeBoardSize(16)" from="board_size_16_id" class="radio">
+                                <input id="board_size_16_id" type="radio" name="radio3" checked>
+                                <span class="radio_custom"></span>
+                                <span class="text">16 cards</span>
                             </label>
-                            <label for="radioId" class="radio">
-                                <input class="radio_input" type="radio" id="radioId" name="radio">
-                                <span class="checkmark"></span>
-                                24 cards
+                            <label onclick="changeBoardSize(24)" from="board_size_24_id" class="radio">
+                                <input id="board_size_24_id" type="radio" name="radio3">
+                                <span class="radio_custom"></span>
+                                <span class="text">24 cards</span>
                             </label>
-                            <label for="radioId" class="radio">
-                                <input class="radio_input" type="radio" id="radioId" name="radio">
-                                <span class="checkmark"></span>
-                                36 cards
+                            <label onclick="changeBoardSize(36)" from="board_size_36_id" class="radio">
+                                <input id="board_size_36_id" type="radio" name="radio3">
+                                <span class="radio_custom"></span>
+                                <span class="text">36 cards</span>
                             </label>
                         </div>
                     </div>
                 </section>
-                <!-- right -->
                 <section class="settings_right">
-                    <img src="/assets/img/code_vibes_theme.png" alt="">
+                    <img id="theme_cover" src="/assets/img/theme_cover/code_vibes.png" alt="">
                     <div class="choosen_settings_and_start_button">
                         <div class="choosen_settings">
                             <span>Game theme</span>
@@ -91,7 +85,7 @@
                             <img src="/assets/img/line_6_slash.png" alt="">
                             <span>Board size</span>
                         </div>
-                        <a class="start_btn primary_a" href="src/pages/board.html">
+                        <a onclick="saveSettings()" class="start_btn primary_a" href="#">
                             <img class="smart_display_icon" src="/assets/img/smart_display.png" alt="">
                             <span>Start</span>
                         </a>
