@@ -84,15 +84,20 @@ class Settings{
     }
 }
 
-function init(){
+function initSettingsPage(){
     settings = new Settings();
     settings.readStorage('all');
     setSettings(settings.getTheme(), settings.getPlayer(), settings.getBoardSize());
     setThemeCover(settings.getTheme());
 }
 
+function initBoardPage(){
+    settings = new Settings();
+    settings.readStorage('all');
+}
 
-//listener ---------------------------------------------------------------------------------------------
+
+//listener - settings ---------------------------------------------------------------------------------------------
 function changeTheme(theme: Theme){
     settings?.setTheme(theme);
     setThemeCover(theme);
@@ -111,7 +116,7 @@ function saveSettings(){
 }
 
 
-//dom manipulation --------------------------------------------------------------------------------------
+//dom manipulation - settings --------------------------------------------------------------------------------------
 function setThemeCover(theme: Theme){
     const themeImgRef = document.getElementById('theme_cover');
     if (themeImgRef){
