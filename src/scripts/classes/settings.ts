@@ -137,3 +137,8 @@ function setSetting(settingTypes: string[], setting: string, selection: string |
         inputRef.checked = selection === settingType ? true : false;
     }
 }
+
+// - page
+//display player in start direction
+//display player depending on theme
+//header depending on theme

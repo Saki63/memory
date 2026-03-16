@@ -4,15 +4,28 @@
 @use '../utils/fonts';
 @use "sass:map";
 
-$theme: 'theme1';
-$background_colors: (theme1: #303131, theme2: #294F60, theme3: #FFFFFF, theme4: #FFFFFF);
-$blue: #2BB1FF;
-$orange: #F58E39;
-$score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 255, 255, 1), theme3: rgba(255, 255, 255, 1), theme4: rgba(255, 255, 255, 1));
+
+$background_colors: (code_vibes: #303131, gaming: #294F60, projects: #FFFFFF, food: #FFFFFF);
+$player_color: ( "orange": #F58E39, "blue": #2BB1FF);
+$header_wrapper: 
+    'code_vibes' transparent none,
+    'gaming' rgba(253, 150, 201, 0.2) 10px, 
+    'projects' rgba(240, 243, 244, 1) 10px, 
+    'food' rgba(240, 229, 217, 1) 10px;
+$score: 
+    'code_vibes' rgba(134, 233, 214, 0.2) none 24px, 
+    'gaming' rgba(255, 255, 255, 1) 10px 30px, 
+    'projects' rgba(255, 255, 255, 1) 10px 30px, 
+    'food' rgba(255, 255, 255, 1) 10px 30px;
+$fonts: 
+    'code_vibes' 'RedRose-Regular' #FFFFFF, 
+    'gaming' 'Orbitron-Regular' #FFFFFF, 
+    'projects' 'Figtree-Regular' #1E7594, 
+    'food' 'KleeOne-Regular' #A45212;
+$fonts_bold: (code_vibes: 'RedRose-Bold', gaming: 'Orbitron-Bold', projects: 'Figtree-Bold', food: 'DeliusUnicase-Bold');
 
 
 .board_page{
-    background-color: map.get($background_colors, $theme);
     @include mi.flex-center();
 
     width: 100vw;
@@ -20,6 +33,12 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
 
     height: 100vh;
     position: relative;
+
+    @each $theme, $color in $background_colors {
+        &_#{$theme} {
+            background-color: $color;
+        }
+    }
 }
 
 .board_content{
@@ -30,6 +49,7 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
     padding: 30px;
 }
 
+//color and radius
 .header{
     padding: 16px;
     position: absolute;
@@ -48,15 +68,23 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
         align-items: end;
         width: 100%;
         max-width: variables.$limit;
-        padding: 16px;        
+        padding: 16px;
+
+        @each $theme, $color, $radius in $header_wrapper {
+            &_#{$theme} {
+                background-color: $color;
+                border-radius: $radius;
+            }
+        }
     }
 }
 
+//color and radius
 .score{
     display: flex;
     flex-direction: row;
     gap: 16px;
-    background-color: map.get($score_background_colors, $theme);
+    // background-color: map.get($score_background_colors, $theme);
     padding: 16px; 
     > div{
         display: flex;
@@ -64,31 +92,56 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
 
         > span{
             white-space: nowrap;
-            font-family: 'RedRose-Bold';
+        }
+    }
+
+    @each $theme, $color, $radius, $size in $score {
+        &_#{$theme} {
+            background-color: $color;
+            border-radius: $radius;
+            font-family: map.get($fonts_bold, $theme);
+            font-size: $size;
         }
     }
 }
 
-.blue_player_score{
-    color: $blue;
+.score_player{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    >img{
+        height: 20px;
+    }        
 }
 
-.orange_player_score{
-    color: $orange;
-}
-
-.radius_10{
-    border-radius: 10px;
+@each $player, $color in $player_color {
+    .player_score_#{$player} {
+        color: $color;
+    }
 }
 
 .current_player{
-    font-family: 'RedRose-Regular';
-    color: #FFFFFF;
     font-size: 24px;
     display: flex;
     align-items: center;
     gap: 6px;
+
+    @each $theme, $font, $color in $fonts {
+        &_#{$theme} {
+            font-family: $font;
+            color: $color;
+        }
+    }
 }
+
+$exit_btn:
+    'code_vibes' #4DD5BC 1px none #FFFFFF 'RedRose-Bold' 24px rgba(134, 233, 214, 0.2),
+    'gaming'#E71C4F 2px 10px #FFFFFF 'Orbitron-Bold' 20px transparent,
+    'projects' transparent 0px 10px #1E7594 'Figtree-Bold' 20px rgba(191, 229, 242, 1),
+    'food' #F3832D 3px 10px #F3832D 'DeliusUnicase-Bold' 16px #FFF9F2;
+
+
 
 .exit_btn{
     display: flex;
@@ -96,12 +149,18 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
     align-items: center;
     justify-content: center;
     padding: 16px;
-    border: 1px solid #4DD5BC;
     cursor: pointer;
-    background-color: map.get($score_background_colors, $theme);;
-    font-family: 'RedRose-Bold';
-    font-size: 24px;
-    color: white;
+
+    @each $theme, $border_color, $border_size, $radius, $font_color, $font, $font_size, $background_color in $exit_btn {
+        &_#{$theme} {
+            border: $border_size solid $border_color;
+            border-radius: $radius;
+            font-family: $font;
+            font-size: $font_size;
+            color: $font_color;
+            background-color: $background_color;
+        }
+    }
 }
 
 .board{
@@ -155,8 +214,19 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
     max-height: 100%;
 }
 
+$exit_dialog:
+    'code_vibes' #FFFFFF 0px,
+    'gaming' #F0F6F9 20px,
+    'projects' #F0F6F9 20px,
+    'food' #F6F6F6 20px;
+
+$exit_dialog_text:
+    'code_vibes' 'RedRose-Bold' 32px #303131,
+    'gaming' 'Orbitron-Bold' 28px #294F60,
+    'projects' 'Figtree-Bold' 28px #294F60,
+    'food' 'KleeOne-SemiBold' 28px #A45212;
+
 .exit_dialog{
-    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,33 +234,72 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
     padding: 32px 24px;
     max-width: 536px;
     gap: 40px;
-    >span{
-        font-family: 'RedRose-Bold';
-        font-size: 32px;
-        color: black;
-        text-align: center;
+    
+    @each $theme, $font, $font_size, $color in $exit_dialog_text {
+        .text_#{$theme} {
+            text-align: center;
+            font-family: $font;
+            font-size: $font_size;
+            color: $color;
+        }
     }
 
     >div{
         display: flex;
         gap: 16px;
     }
+
+    @each $theme, $background_color, $radius in $exit_dialog {
+        &_#{$theme} {
+            background-color: $background_color;
+            border-radius: $radius;
+        }
+    }
 }
+
+$back_to_game_btn:
+    'code_vibes' 'RedRose-Bold' 20px #FFFFFF #66CFBC 2px #66CFBC 0px,
+    'gaming' 'Orbitron-Bold' 16px #FFFFFF #ED1B76 1px #E71C4F 10px,
+    'projects' 'Figtree-Bold' 16px #1E7594 #BFE5F2 0px #BFE5F2 10px,
+    'food' 'DeliusUnicase-Bold' 16px #FFFFFF #FFAB3E 3px #F3832D 10px;
 
 .back_to_game_btn{
-    background-color: #66CFBC;
+    // background-color: #66CFBC;
     padding: 16px;
-    font-family: 'RedRose-Bold';
-    font-size: 20px;
-    color: white;
-    border: 2px solid #66CFBC;
+    // font-family: 'RedRose-Bold';
+    // font-size: 20px;
+    // color: white;
+    // border: 2px solid #66CFBC;
+
+    @each $theme, $font, $font_size, $font_color, $background_color, $border_size, $border_color, $radius in $back_to_game_btn {
+        &_#{$theme} {
+            font-family: $font;
+            font-size: $font_size;
+            color: $font_color;
+            background-color: $background_color;
+            border: $border_size solid $border_color;
+            border-radius: $radius;
+        }
+    }
 }
 
+$exit_link:
+    'code_vibes' 'RedRose-Bold' 20px #4DD5BC rgba(134, 233, 214, 0.14) 2px #66CFBC 0px,
+    'gaming' 'Orbitron-Bold' 16px #ED1B76 rgba(237, 27, 118, 0.08) 2px #E71C4F 10px,
+    'projects' 'Figtree-Bold' 16px #FFFFFF rgba(253, 138, 129, 1) 0px #FD8A81 10px,
+    'food' 'DeliusUnicase-Bold' 16px #F3832D rgba(255, 249, 242, 1) 3px #F3832D 10px;
+
 .exit_link{
-    background-color: rgba(134, 233, 214, 0.14);
     padding: 16px;
-    font-family: 'RedRose-Bold';
-    font-size: 20px;
-    color: #66CFBC;
-    border: 2px solid #66CFBC;
+
+    @each $theme, $font, $font_size, $font_color, $background_color, $border_size, $border_color, $radius in $exit_link {
+        &_#{$theme} {
+            font-family: $font;
+            font-size: $font_size;
+            color: $font_color;
+            background-color: $background_color;
+            border: $border_size solid $border_color;
+            border-radius: $radius;
+        }
+    }
 }
