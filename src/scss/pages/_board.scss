@@ -38,11 +38,16 @@ $score_background_colors: (theme1: rgba(134, 233, 214, 0.2), theme2: rgba(255, 2
     width: 100vw;
     max-width: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     .header_wrapper{
         display: flex;
         justify-content: space-between;
         align-items: end;
         width: 100%;
+        max-width: variables.$limit;
         padding: 16px;        
     }
 }
