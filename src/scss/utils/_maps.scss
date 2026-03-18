@@ -28,11 +28,25 @@ $score_fs: (
   food: 30px
 );
 
+$score_g: (
+  code_vibes: 16px,
+  gaming: 32px,
+  projects: 32px,
+  food: 32px
+);
+
+$score_player_img_height: (
+  code_vibes: 20px,
+  gaming: 28px,
+  projects: 25px,
+  food: 25px
+);
+
 $current_player_ff: (
   code_vibes: 'RedRose-Regular',
   gaming: 'Orbitron-Regular',
   projects: 'Figtree-Regular',
-  food: 'KleeOne-Regular'
+  food: 'KleeOne-SemiBold'
 );
 
 $current_player_fc: (
@@ -40,6 +54,13 @@ $current_player_fc: (
   gaming: #FFFFFF,
   projects: #1E7594,
   food: #A45212
+);
+
+$current_player_fs: (
+  code_vibes: 26px,
+  gaming: 32px,
+  projects: 32px,
+  food: 32px
 );
 
 $exit-btn-bc: (

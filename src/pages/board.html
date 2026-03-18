@@ -6,30 +6,28 @@
     <title>Memory/Board</title>
     <script src="../scripts/classes/settings.ts"></script>
 </head>
-<body onload="initBoardPage()" class="theme_food">
+<body onload="initBoardPage()" class="">
     <main id="board_page" class="board_page">
         <div class="board_content">
             <div class="header">
                 <div id="header_wrapper" class="header_wrapper">
                     <div class="score">
-                        <div class="score_player player_score_blue">
-                            <!-- images change -->
-                            <img src="/assets/img/player-blue-theme1.png" alt="">
-                            <span>Blue 6</span> <!-- score change -->                  
+                        <div id="first_player_id" class="score_player">
+                            <img src="" alt="first player icon">
+                            <span id="first_player_score_id">-</span>                 
                         </div>
-                        <div class="score_player player_score_orange">
-                            <!-- images change -->
-                            <img src="/assets/img/player-orange-theme1.png" alt="">
-                            <span>Orange 2</span>   <!-- score change -->
+                        <div id="second_player_id" class="score_player">
+                            <img src="" alt="second player icon">
+                            <span id="second_player_score_id">-</span>
                         </div>
                     </div>
     
                     <div class="current_player">
                         <span>Current player:</span>
-                        <img src="/assets/img/player-blue-theme1.png" alt="">
+                        <div id="current_player_img_id"></div>
                     </div>
                     <button class="exit_btn">
-                        <img src="/assets/img/exit.png" alt="">
+                        <div id="exit_btn_img_id"></div>
                         <span>Exit game</span>
                     </button>
                 </div>

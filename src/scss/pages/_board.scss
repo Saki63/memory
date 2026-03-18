@@ -27,16 +27,6 @@
     justify-content: center;
 }
 
-.score_player{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    >img{
-        height: 20px;
-    }        
-}
-
 @each $player, $color in maps.$player_color {
     .player_score_#{$player} {
         color: $color;
@@ -124,15 +114,22 @@
         .score {
             display: flex;
             flex-direction: row;
-            gap: 16px;
-            padding: 16px; 
-            > div{
+            gap: map.get(maps.$score_g, $theme);
+            padding: 16px;
+        
+            .score_player{
                 display: flex;
+                align-items: center;
                 gap: 8px;
 
-                > span{
-                    white-space: nowrap;
+                >img{
+                    height: map.get(maps.$score_player_img_height, $theme);
                 }
+
+                > span{
+                    text-transform: capitalize;
+                    white-space: nowrap;
+                }  
             }
 
             background-color: map.get(maps.$score_bgc, $theme);
@@ -142,13 +139,17 @@
         }
 
         .current_player {
-            font-size: 24px;
+            font-size: map.get(maps.$current_player_fs, $theme);
             display: flex;
             align-items: center;
             gap: 6px;
 
             font-family: map.get(maps.$current_player_ff, $theme);
-            color: map.get(maps.$current_player_fc, $theme)
+            color: map.get(maps.$current_player_fc, $theme);
+
+            > div {
+                display: contents;
+            }
         }
 
         .exit_btn{
@@ -159,13 +160,22 @@
             padding: 16px;
             cursor: pointer;
 
-            border-color: map.get(maps.$exit-btn-bc, $theme);
-            border-width: map.get(maps.$exit-btn-bs, $theme);
+            border: map.get(maps.$exit-btn-bs, $theme) solid map.get(maps.$exit-btn-bc, $theme);
             border-radius: map.get(maps.$exit-btn-br, $theme);
             color: map.get(maps.$exit-btn-fc, $theme);
             font-family: map.get(maps.$exit-btn-ff, $theme);
             font-size: map.get(maps.$exit-btn-fs, $theme);
             background-color: map.get(maps.$exit-btn-bgdc, $theme);
+
+            transition: transform 0.5s;
+
+            >div {
+                display: contents;
+            }
+
+            &:hover{
+                transform: scale(1.10);
+            }
         }
 
         .exit_dialog{
