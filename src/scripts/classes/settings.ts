@@ -99,6 +99,8 @@ function initBoardPage(){
     displayPlayer(player, theme);
     displayCurrentPlayer(player, theme);
     displayExitBtnIcon(theme);
+    const boardSize = settings.getBoardSize();
+    setBoard(boardSize);
 }
 
 
@@ -248,6 +250,21 @@ function getExitImg(theme: Theme){
             break;
         default:
             console.error("This theme has no image!");
+    }
+    return template;
+}
+
+function setBoard(boardSize: BoardSize){
+    const boardRef = document.getElementById('board_id');
+    if (boardRef) boardRef.innerHTML = buildBoard(boardSize);
+    boardRef?.classList.add('board_size_' + boardSize);
+}
+
+function buildBoard(boardSize: BoardSize){
+    const size = Number(boardSize);
+    let template = '';
+    for(let index = 0; index < size; index++){
+        template += '<div class="card"><img src="/assets/img/backside-card-theme1.png" alt=""></div>';
     }
     return template;
 }
