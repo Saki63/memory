@@ -94,6 +94,7 @@ function initSettingsPage(){
 function initBoardPage(){
     settings = new Settings();
     settings.readStorage('all');
+    themeView();
 }
 
 
@@ -142,3 +143,8 @@ function setSetting(settingTypes: string[], setting: string, selection: string |
 //display player in start direction
 //display player depending on theme
 //header depending on theme
+
+
+function themeView(){
+    document.body.className = "theme_code_vibes"
+}

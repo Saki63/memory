@@ -1,45 +1,10 @@
 @use '../utils/variables';
 @use '../utils/mixins' as mi;
 @use '../utils/color-palette' as cp;
+@use '../utils/maps';
 @use '../utils/fonts';
 @use "sass:map";
 
-
-$background_colors: (code_vibes: #303131, gaming: #294F60, projects: #FFFFFF, food: #FFFFFF);
-$player_color: ( "orange": #F58E39, "blue": #2BB1FF);
-$header_wrapper: 
-    'code_vibes' transparent none,
-    'gaming' rgba(253, 150, 201, 0.2) 10px, 
-    'projects' rgba(240, 243, 244, 1) 10px, 
-    'food' rgba(240, 229, 217, 1) 10px;
-$score: 
-    'code_vibes' rgba(134, 233, 214, 0.2) none 24px, 
-    'gaming' rgba(255, 255, 255, 1) 10px 30px, 
-    'projects' rgba(255, 255, 255, 1) 10px 30px, 
-    'food' rgba(255, 255, 255, 1) 10px 30px;
-$fonts: 
-    'code_vibes' 'RedRose-Regular' #FFFFFF, 
-    'gaming' 'Orbitron-Regular' #FFFFFF, 
-    'projects' 'Figtree-Regular' #1E7594, 
-    'food' 'KleeOne-Regular' #A45212;
-$fonts_bold: (code_vibes: 'RedRose-Bold', gaming: 'Orbitron-Bold', projects: 'Figtree-Bold', food: 'DeliusUnicase-Bold');
-
-
-.board_page{
-    @include mi.flex-center();
-
-    width: 100vw;
-    max-width: 100%;
-
-    height: 100vh;
-    position: relative;
-
-    @each $theme, $color in $background_colors {
-        &_#{$theme} {
-            background-color: $color;
-        }
-    }
-}
 
 .board_content{
     max-width: variables.$limit;
@@ -49,7 +14,6 @@ $fonts_bold: (code_vibes: 'RedRose-Bold', gaming: 'Orbitron-Bold', projects: 'Fi
     padding: 30px;
 }
 
-//color and radius
 .header{
     padding: 16px;
     position: absolute;
@@ -61,48 +25,6 @@ $fonts_bold: (code_vibes: 'RedRose-Bold', gaming: 'Orbitron-Bold', projects: 'Fi
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .header_wrapper{
-        display: flex;
-        justify-content: space-between;
-        align-items: end;
-        width: 100%;
-        max-width: variables.$limit;
-        padding: 16px;
-
-        @each $theme, $color, $radius in $header_wrapper {
-            &_#{$theme} {
-                background-color: $color;
-                border-radius: $radius;
-            }
-        }
-    }
-}
-
-//color and radius
-.score{
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    // background-color: map.get($score_background_colors, $theme);
-    padding: 16px; 
-    > div{
-        display: flex;
-        gap: 8px;
-
-        > span{
-            white-space: nowrap;
-        }
-    }
-
-    @each $theme, $color, $radius, $size in $score {
-        &_#{$theme} {
-            background-color: $color;
-            border-radius: $radius;
-            font-family: map.get($fonts_bold, $theme);
-            font-size: $size;
-        }
-    }
 }
 
 .score_player{
@@ -115,51 +37,9 @@ $fonts_bold: (code_vibes: 'RedRose-Bold', gaming: 'Orbitron-Bold', projects: 'Fi
     }        
 }
 
-@each $player, $color in $player_color {
+@each $player, $color in maps.$player_color {
     .player_score_#{$player} {
         color: $color;
-    }
-}
-
-.current_player{
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-
-    @each $theme, $font, $color in $fonts {
-        &_#{$theme} {
-            font-family: $font;
-            color: $color;
-        }
-    }
-}
-
-$exit_btn:
-    'code_vibes' #4DD5BC 1px none #FFFFFF 'RedRose-Bold' 24px rgba(134, 233, 214, 0.2),
-    'gaming'#E71C4F 2px 10px #FFFFFF 'Orbitron-Bold' 20px transparent,
-    'projects' transparent 0px 10px #1E7594 'Figtree-Bold' 20px rgba(191, 229, 242, 1),
-    'food' #F3832D 3px 10px #F3832D 'DeliusUnicase-Bold' 16px #FFF9F2;
-
-
-
-.exit_btn{
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-    cursor: pointer;
-
-    @each $theme, $border_color, $border_size, $radius, $font_color, $font, $font_size, $background_color in $exit_btn {
-        &_#{$theme} {
-            border: $border_size solid $border_color;
-            border-radius: $radius;
-            font-family: $font;
-            font-size: $font_size;
-            color: $font_color;
-            background-color: $background_color;
-        }
     }
 }
 
@@ -214,92 +94,123 @@ $exit_btn:
     max-height: 100%;
 }
 
-$exit_dialog:
-    'code_vibes' #FFFFFF 0px,
-    'gaming' #F0F6F9 20px,
-    'projects' #F0F6F9 20px,
-    'food' #F6F6F6 20px;
 
-$exit_dialog_text:
-    'code_vibes' 'RedRose-Bold' 32px #303131,
-    'gaming' 'Orbitron-Bold' 28px #294F60,
-    'projects' 'Figtree-Bold' 28px #294F60,
-    'food' 'KleeOne-SemiBold' 28px #A45212;
+@each $theme in maps.$themes {
+    body.theme_#{$theme} {
+        .board_page {
+            @include mi.flex-center();
 
-.exit_dialog{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 32px 24px;
-    max-width: 536px;
-    gap: 40px;
-    
-    @each $theme, $font, $font_size, $color in $exit_dialog_text {
-        .text_#{$theme} {
-            text-align: center;
-            font-family: $font;
-            font-size: $font_size;
-            color: $color;
+            width: 100vw;
+            max-width: 100%;
+
+            height: 100vh;
+            position: relative;
+
+            background-color: map.get(maps.$page-bgdc, $theme);
         }
-    }
 
-    >div{
-        display: flex;
-        gap: 16px;
-    }
+        .header_wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            width: 100%;
+            max-width: variables.$limit;
+            padding: 16px;
 
-    @each $theme, $background_color, $radius in $exit_dialog {
-        &_#{$theme} {
-            background-color: $background_color;
-            border-radius: $radius;
+            background-color: map.get(maps.$header_wrapper_bgc, $theme);
+            border-radius: map.get(maps.$header_wrapper_br, $theme);
         }
-    }
-}
 
-$back_to_game_btn:
-    'code_vibes' 'RedRose-Bold' 20px #FFFFFF #66CFBC 2px #66CFBC 0px,
-    'gaming' 'Orbitron-Bold' 16px #FFFFFF #ED1B76 1px #E71C4F 10px,
-    'projects' 'Figtree-Bold' 16px #1E7594 #BFE5F2 0px #BFE5F2 10px,
-    'food' 'DeliusUnicase-Bold' 16px #FFFFFF #FFAB3E 3px #F3832D 10px;
+        .score {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            padding: 16px; 
+            > div{
+                display: flex;
+                gap: 8px;
 
-.back_to_game_btn{
-    // background-color: #66CFBC;
-    padding: 16px;
-    // font-family: 'RedRose-Bold';
-    // font-size: 20px;
-    // color: white;
-    // border: 2px solid #66CFBC;
+                > span{
+                    white-space: nowrap;
+                }
+            }
 
-    @each $theme, $font, $font_size, $font_color, $background_color, $border_size, $border_color, $radius in $back_to_game_btn {
-        &_#{$theme} {
-            font-family: $font;
-            font-size: $font_size;
-            color: $font_color;
-            background-color: $background_color;
-            border: $border_size solid $border_color;
-            border-radius: $radius;
+            background-color: map.get(maps.$score_bgc, $theme);
+            border-radius: map.get(maps.$score_br, $theme);
+            font-family: map.get(maps.$fonts_bold, $theme);
+            font-size: map.get(maps.$score_fs, $theme)
         }
-    }
-}
 
-$exit_link:
-    'code_vibes' 'RedRose-Bold' 20px #4DD5BC rgba(134, 233, 214, 0.14) 2px #66CFBC 0px,
-    'gaming' 'Orbitron-Bold' 16px #ED1B76 rgba(237, 27, 118, 0.08) 2px #E71C4F 10px,
-    'projects' 'Figtree-Bold' 16px #FFFFFF rgba(253, 138, 129, 1) 0px #FD8A81 10px,
-    'food' 'DeliusUnicase-Bold' 16px #F3832D rgba(255, 249, 242, 1) 3px #F3832D 10px;
+        .current_player {
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
 
-.exit_link{
-    padding: 16px;
+            font-family: map.get(maps.$current_player_ff, $theme);
+            color: map.get(maps.$current_player_fc, $theme)
+        }
 
-    @each $theme, $font, $font_size, $font_color, $background_color, $border_size, $border_color, $radius in $exit_link {
-        &_#{$theme} {
-            font-family: $font;
-            font-size: $font_size;
-            color: $font_color;
-            background-color: $background_color;
-            border: $border_size solid $border_color;
-            border-radius: $radius;
+        .exit_btn{
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            cursor: pointer;
+
+            border-color: map.get(maps.$exit-btn-bc, $theme);
+            border-width: map.get(maps.$exit-btn-bs, $theme);
+            border-radius: map.get(maps.$exit-btn-br, $theme);
+            color: map.get(maps.$exit-btn-fc, $theme);
+            font-family: map.get(maps.$exit-btn-ff, $theme);
+            font-size: map.get(maps.$exit-btn-fs, $theme);
+            background-color: map.get(maps.$exit-btn-bgdc, $theme);
+        }
+
+        .exit_dialog{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 24px;
+            max-width: 536px;
+            gap: 40px;
+
+            .text {
+                text-align: center;
+                font-family: map.get(maps.$exit-dialog-text-ff, $theme);
+                font-size: map.get(maps.$exit-dialog-text-fs, $theme);
+                color: map.get(maps.$exit-dialog-text-fc, $theme);
+            }
+
+            >div{
+                display: flex;
+                gap: 16px;
+            }
+
+            background-color: map.get(maps.$exit-dialog-bgdc, $theme);
+            border-radius: map.get(maps.$exit-dialog-br, $theme);
+        }
+
+        .back_to_game_btn{
+            padding: 16px;
+            font-family: map.get(maps.$back-to-game-ff, $theme);
+            font-size: map.get(maps.$back-to-game-fs, $theme);
+            color: map.get(maps.$back-to-game-fc, $theme);
+            background-color: map.get(maps.$back-to-game-bgdc, $theme);
+            border: map.get(maps.$back-to-game-bs, $theme) solid map.get(maps.$back-to-game-bc, $theme);
+            border-radius: map.get(maps.$back-to-game-br, $theme);
+        }
+
+        .exit_link{
+            padding: 16px;
+            font-family: map.get(maps.$exit-link-ff, $theme);
+            font-size: map.get(maps.$exit-link-fs, $theme);
+            color: map.get(maps.$exit-link-fc, $theme);
+            background-color: map.get(maps.$exit-link-bgdc, $theme);
+            border: map.get(maps.$exit-link-bs, $theme) solid map.get(maps.$exit-link-bc, $theme);
+            border-radius: map.get(maps.$exit-link-br, $theme);
         }
     }
 }

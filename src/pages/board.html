@@ -6,12 +6,12 @@
     <title>Memory/Board</title>
     <script src="../scripts/classes/settings.ts"></script>
 </head>
-<body onload="initBoardPage()">
-    <main class="board_page board_page_code_vibes">
+<body onload="initBoardPage()" class="theme_food">
+    <main id="board_page" class="board_page">
         <div class="board_content">
             <div class="header">
-                <div class="header_wrapper header_wrapper_code_vibes">
-                    <div class="score score_code_vibes">
+                <div id="header_wrapper" class="header_wrapper">
+                    <div class="score">
                         <div class="score_player player_score_blue">
                             <!-- images change -->
                             <img src="/assets/img/player-blue-theme1.png" alt="">
@@ -24,11 +24,11 @@
                         </div>
                     </div>
     
-                    <div class="current_player current_player_code_vibes">
+                    <div class="current_player">
                         <span>Current player:</span>
                         <img src="/assets/img/player-blue-theme1.png" alt="">
                     </div>
-                    <button class="exit_btn exit_btn_code_vibes">
+                    <button class="exit_btn">
                         <img src="/assets/img/exit.png" alt="">
                         <span>Exit game</span>
                     </button>
@@ -54,11 +54,11 @@
             </div>
         </div>
         <div class="overlay d_none">
-            <div class="exit_dialog exit_dialog_code_vibes">
-                <span class="text_code_vibes">Are your sure you want to quit the game?</span>
+            <div class="exit_dialog">
+                <span class="text">Are your sure you want to quit the game?</span>
                 <div>
-                    <button class="back_to_game_btn back_to_game_btn_code_vibes">Back to game</button>
-                    <a class="exit_link exit_link_code_vibes" href="">Exit game</a>
+                    <button class="back_to_game_btn">Back to game</button>
+                    <a class="exit_link" href="">Exit game</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,227 @@
+
+$themes: 'code_vibes', 'gaming', 'projects', 'food';
+$player_color: ( "orange": #F58E39, "blue": #2BB1FF);
+
+$fonts_bold: (code_vibes: 'RedRose-Bold', gaming: 'Orbitron-Bold', projects: 'Figtree-Bold', food: 'DeliusUnicase-Bold');
+
+$header_wrapper_bgc: (code_vibes: transparent, gaming: rgba(253, 150, 201, 0.2), projects: rgba(240, 243, 244, 1), food: rgba(240, 229, 217, 1));
+$header_wrapper_br: (code_vibes: none, gaming: 10px, projects: 10px, food: 10px);
+
+$score_bgc: (
+  code_vibes: rgba(134, 233, 214, 0.2),
+  gaming: rgba(255, 255, 255, 1),
+  projects: rgba(255, 255, 255, 1),
+  food: rgba(255, 255, 255, 1)
+);
+
+$score_br: (
+  code_vibes: none,
+  gaming: 10px,
+  projects: 10px,
+  food: 10px
+);
+
+$score_fs: (
+  code_vibes: 24px,
+  gaming: 30px,
+  projects: 30px,
+  food: 30px
+);
+
+$current_player_ff: (
+  code_vibes: 'RedRose-Regular',
+  gaming: 'Orbitron-Regular',
+  projects: 'Figtree-Regular',
+  food: 'KleeOne-Regular'
+);
+
+$current_player_fc: (
+  code_vibes: #FFFFFF,
+  gaming: #FFFFFF,
+  projects: #1E7594,
+  food: #A45212
+);
+
+$exit-btn-bc: (
+  code_vibes: #4DD5BC,
+  gaming: #E71C4F,
+  projects: transparent,
+  food: #F3832D
+);
+
+$exit-btn-bs: (
+  code_vibes: 1px,
+  gaming: 2px,
+  projects: 0px,
+  food: 3px
+);
+
+$exit-btn-br: (
+  code_vibes: none,
+  gaming: 10px,
+  projects: 10px,
+  food: 10px
+);
+
+$exit-btn-fc: (
+  code_vibes: #FFFFFF,
+  gaming: #FFFFFF,
+  projects: #1E7594,
+  food: #F3832D
+);
+
+$exit-btn-ff: (
+  code_vibes: 'RedRose-Bold',
+  gaming: 'Orbitron-Bold',
+  projects: 'Figtree-Bold',
+  food: 'DeliusUnicase-Bold'
+);
+
+$exit-btn-fs: (
+  code_vibes: 24px,
+  gaming: 20px,
+  projects: 20px,
+  food: 16px
+);
+
+$exit-btn-bgdc: (
+  code_vibes: rgba(134, 233, 214, 0.2),
+  gaming: transparent,
+  projects: rgba(191, 229, 242, 1),
+  food: #FFF9F2
+);
+
+$exit-dialog-bgdc: (
+  code_vibes: #FFFFFF,
+  gaming: #F0F6F9,
+  projects: #F0F6F9,
+  food: #F6F6F6
+);
+
+$exit-dialog-br: (
+  code_vibes: 0px,
+  gaming: 20px,
+  projects: 20px,
+  food: 20px
+);
+
+$exit-dialog-text-ff: (
+  code_vibes: 'RedRose-Bold',
+  gaming: 'Orbitron-Bold',
+  projects: 'Figtree-Bold',
+  food: 'KleeOne-SemiBold'
+);
+
+$exit-dialog-text-fs: (
+  code_vibes: 32px,
+  gaming: 28px,
+  projects: 28px,
+  food: 28px
+);
+
+$exit-dialog-text-fc: (
+  code_vibes: #303131,
+  gaming: #294F60,
+  projects: #294F60,
+  food: #A45212
+);
+
+$back-to-game-ff: (
+  code_vibes: 'RedRose-Bold',
+  gaming: 'Orbitron-Bold',
+  projects: 'Figtree-Bold',
+  food: 'DeliusUnicase-Bold'
+);
+
+$back-to-game-fs: (
+  code_vibes: 20px,
+  gaming: 16px,
+  projects: 16px,
+  food: 16px
+);
+
+$back-to-game-fc: (
+  code_vibes: #FFFFFF,
+  gaming: #FFFFFF,
+  projects: #1E7594,
+  food: #FFFFFF
+);
+
+$back-to-game-bgdc: (
+  code_vibes: #66CFBC,
+  gaming: #ED1B76,
+  projects: #BFE5F2,
+  food: #FFAB3E
+);
+
+$back-to-game-bs: (
+  code_vibes: 2px,
+  gaming: 1px,
+  projects: 0px,
+  food: 3px
+);
+
+$back-to-game-bc: (
+  code_vibes: #66CFBC,
+  gaming: #E71C4F,
+  projects: #BFE5F2,
+  food: #F3832D
+);
+
+$back-to-game-br: (
+  code_vibes: 0px,
+  gaming: 10px,
+  projects: 10px,
+  food: 10px
+);
+
+$exit-link-ff: (
+  code_vibes: 'RedRose-Bold',
+  gaming: 'Orbitron-Bold',
+  projects: 'Figtree-Bold',
+  food: 'DeliusUnicase-Bold'
+);
+
+$exit-link-fs: (
+  code_vibes: 20px,
+  gaming: 16px,
+  projects: 16px,
+  food: 16px
+);
+
+$exit-link-fc: (
+  code_vibes: #4DD5BC,
+  gaming: #ED1B76,
+  projects: #FFFFFF,
+  food: #F3832D
+);
+
+$exit-link-bgdc: (
+  code_vibes: rgba(134, 233, 214, 0.14),
+  gaming: rgba(237, 27, 118, 0.08),
+  projects: rgba(253, 138, 129, 1),
+  food: rgba(255, 249, 242, 1)
+);
+
+$exit-link-bs: (
+  code_vibes: 2px,
+  gaming: 2px,
+  projects: 0px,
+  food: 3px
+);
+
+$exit-link-bc: (
+  code_vibes: #66CFBC,
+  gaming: #E71C4F,
+  projects: #FD8A81,
+  food: #F3832D
+);
+
+$exit-link-br: (
+  code_vibes: 0px,
+  gaming: 10px,
+  projects: 10px,
+  food: 10px
+);
+
+$page-bgdc: (code_vibes: #303131, gaming: #294F60, projects: #FFFFFF, food: #FFFFFF);
