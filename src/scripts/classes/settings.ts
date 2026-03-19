@@ -101,6 +101,7 @@ function initBoardPage(){
     displayExitBtnIcon(theme);
     const boardSize = settings.getBoardSize();
     setBoard(boardSize);
+    addCardListener();
 }
 
 
@@ -146,11 +147,6 @@ function setSetting(settingTypes: string[], setting: string, selection: string |
 }
 
 // - page
-//display player in start direction
-//display player depending on theme
-//header depending on theme
-
-
 function themeView(theme: Theme){
     document.body.className = "theme_" + theme;
 }
@@ -264,10 +260,29 @@ function buildBoard(boardSize: BoardSize){
     const size = Number(boardSize);
     let template = '';
     for(let index = 0; index < size; index++){
-        template += '<div class="card"><img src="/assets/img/backside-card-theme1.png" alt=""></div>';
+        template += `<button class="card">
+                        <div class="card_inner">
+                            <div class="card_face"></div>
+                            <div class="card_face card_face--back"></div>
+                        </div>
+                    </button>`;
     }
     return template;
 }
+
+function addCardListener(){
+    const boardRef = document.getElementById('board_id');
+    if (boardRef){
+        boardRef.addEventListener("click", e => {
+            const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
+            if (card){
+                card.classList.toggle("is-flipped");
+            }
+        })
+    }
+}
+
+// game logic
 
 class Game{
     score = {
