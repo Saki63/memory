@@ -54,10 +54,13 @@
 
 .card{
     height: 120px;
+    width: 120px;
     aspect-ratio: 1 / 1;
     cursor: pointer;
     background-color: transparent;
     border: none;
+    padding: 0;
+    transition: transform 300ms ease-in-out;
 
     &_inner{
         position: relative;
@@ -70,14 +73,11 @@
     &_face{
         position: absolute;
         inset: 0;
-        background-color: blue;
         backface-visibility: hidden;
 
-        &--back{
+        &--back{    
             transform: rotateY(180deg);
-            background-color: red;
         }
-
     }
         
     &.is-flipped .card_inner{
@@ -86,6 +86,10 @@
 
     *{
         cursor: pointer;
+    }
+
+    &:hover{
+        transform: scale(1.05);
     }
 }
 
