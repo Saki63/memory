@@ -11,17 +11,7 @@
         <div class="board_content">
             <div class="header">
                 <div id="header_wrapper" class="header_wrapper">
-                    <div class="score">
-                        <div id="first_player_id" class="score_player">
-                            <img src="" alt="first player icon">
-                            <span id="first_player_score_id">-</span>                 
-                        </div>
-                        <div id="second_player_id" class="score_player">
-                            <img src="" alt="second player icon">
-                            <span id="second_player_score_id">-</span>
-                        </div>
-                    </div>
-    
+                    <div id="score" class="score"></div>
                     <div class="current_player">
                         <span>Current player:</span>
                         <div id="current_player_img_id"></div>
@@ -35,13 +25,32 @@
             <div id="board_id" class="board">
             </div>
         </div>
-        <div class="overlay d_none">
+        <div id="exit-dialog-overlay" class="overlay d_none">
             <div class="exit_dialog">
                 <span class="text">Are your sure you want to quit the game?</span>
                 <div>
                     <button class="back_to_game_btn">Back to game</button>
                     <a class="exit_link" href="">Exit game</a>
                 </div>
+            </div>
+        </div>
+        <div id="game-over-overlay" class="overlay game_over_overlay d_none">
+            <div class="game_over_content">
+                <img id="game-over-lettering" src="" alt="">
+                <span>Final score</span>
+                <div id="final-score" class="score"></div>
+            </div>
+        </div>
+        <div id="winner-overlay" class="overlay winner_overlay d_none">
+            <div class="winner_content">
+                <img class="confetti" id="confetti-img" src="" alt="">
+                <span id="start-text">The winner is</span>
+                <h2 id="winner-announcement">-</h2>
+                <div class="img_wrapper">
+                    <img id="winner-img" class="winner_img" src="" alt="">
+                    <img id="tie-img" class="winner_img d_none" src="" alt="">                    
+                </div>
+                <a id="home-btn" href="/">Back to start</a>
             </div>
         </div>
     </main>

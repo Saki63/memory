@@ -100,9 +100,12 @@ function initBoardPage(){
     displayCurrentPlayer(player, theme);
     displayExitBtnIcon(theme);
     const boardSize = settings.getBoardSize();
-    const game = new Game(Number(boardSize), player);
+    const game = new Game(Number(boardSize), player, theme);
     setBoard(theme, game.cards);
-    addCardListener();
+    addCardListener(game);
+    displayFinalScore(player, theme);
+    buildGameOverOverlay(theme);
+    buildWinnerOverlay(theme);
 }
 
 
@@ -153,27 +156,65 @@ function themeView(theme: Theme){
 }
 
 function displayPlayer(firstPlayer: Player, theme: Theme){
-    const secondPlayer: Player = firstPlayer === 'blue' ? 'orange' : 'blue';
-    const firstPlayerRef = document.getElementById('first_player_id');
-    const secondPlayerRef = document.getElementById('second_player_id');
+    const scoreRef = document.getElementById('score');
+    const secondPlayer: Player = firstPlayer === "blue" ? "orange" : "blue";
+    if (scoreRef){
+        scoreRef.innerHTML = `
+            <div id="${firstPlayer}_player_id" class="score_player player_score_${firstPlayer}">
+                <img src="${'/assets/img/player-' + firstPlayer + '-' + theme + '.png'}" alt="first player icon">
+                <span id="${firstPlayer}_player_score_id">-</span>                 
+            </div>
+            <div id="${secondPlayer}_player_id" class="score_player player_score_${secondPlayer}">
+                <img src="${'/assets/img/player-' + secondPlayer + '-' + theme + '.png'}" alt="second player icon">
+                <span id="${secondPlayer}_player_score_id">-</span>
+            </div>
+        `;        
+    }
 
-    firstPlayerRef?.classList.add('player_score_' + firstPlayer);
-    secondPlayerRef?.classList.add('player_score_' + secondPlayer);
-
-    firstPlayerRef?.firstElementChild?.setAttribute('src', '/assets/img/player-' + firstPlayer + '-' + theme + '.png');
-    secondPlayerRef?.firstElementChild?.setAttribute('src', '/assets/img/player-' + secondPlayer + '-' + theme + '.png');
-    
-    setScore(theme, firstPlayer, secondPlayer, 0, 0);
+    setScoreOfPlayer(firstPlayer, theme, 0);
+    setScoreOfPlayer(secondPlayer, theme, 0);
 }
 
-function setScore(theme: Theme, firstPlayer: Player, secondPlayer: Player, score1: number, score2: number){
-    const firstPlayerScoreRef = document.getElementById('first_player_score_id');
-    const secondPlayerScoreRef = document.getElementById('second_player_score_id');
+function buildGameOverOverlay(theme: Theme){
+    const picRef = document.getElementById('game-over-lettering') as HTMLImageElement;
+    picRef.src = "/assets/img/game-over-" + theme + ".png";
+}
 
-    if (firstPlayerScoreRef && secondPlayerScoreRef){
-        firstPlayerScoreRef.innerText = theme === 'code_vibes' ? `${firstPlayer} ${score1}` : `${score1}`;
-        secondPlayerScoreRef.innerText = theme === 'code_vibes' ? `${secondPlayer} ${score2}` : `${score2}`;
+function setScoreOfPlayer(player: Player, theme: Theme, score: number){
+    const playerScoreRef = document.getElementById(player + '_player_score_id');
+    if (playerScoreRef){
+        playerScoreRef.innerText = theme === 'code_vibes' ? `${player} ${score}` : `${score}`;
     }
+}
+
+function displayFinalScore(firstPlayer: Player, theme: Theme){
+    const scoreRef = document.getElementById('final-score');
+    const secondPlayer: Player = firstPlayer === "blue" ? "orange" : "blue";
+    if (scoreRef){
+        scoreRef.innerHTML = `
+            <div class="score_player player_score_${firstPlayer}">
+                <img src="${'/assets/img/player-' + firstPlayer + '-' + theme + '.png'}" alt="first player icon">
+                <span id="${firstPlayer}_player_final_score_id">-</span>                 
+            </div>
+            <div class="score_player player_score_${secondPlayer}">
+                <img src="${'/assets/img/player-' + secondPlayer + '-' + theme + '.png'}" alt="second player icon">
+                <span id="${secondPlayer}_player_final_score_id">-</span>
+            </div>
+        `;        
+    }
+
+    setScoreOfPlayer(firstPlayer, theme, 0);
+    setScoreOfPlayer(secondPlayer, theme, 0);
+}
+
+function setFinalScores(firstPlayer: Player, secondPlayer: Player, firstScore: number, secondScore: number){
+    setFinalScore(firstPlayer, firstScore);
+    setFinalScore(secondPlayer, secondScore);
+}
+
+function setFinalScore(player: Player, score: number){
+    const scoreRef = document.getElementById(player + '_player_final_score_id');
+    if (scoreRef) scoreRef.innerText = `${score}`;
 }
 
 function displayCurrentPlayer(currentPlayer: Player, theme: Theme){
@@ -262,7 +303,7 @@ function setBoard(theme: Theme, cards: number[]){
 function buildBoard(theme: Theme, cards: number[]){
     let template = '';
     for(let index = 0; index < cards.length; index++){
-        template += `<button class="card">
+        template += `<button class="card" id="card-${index}-id">
                         <div class="card_inner">
                             <div class="card_face">
                                 <img src="/assets/img/cards/${theme}/back.png"/>
@@ -276,19 +317,61 @@ function buildBoard(theme: Theme, cards: number[]){
     return template;
 }
 
-function addCardListener(){
+function addCardListener(game: Game){
     const boardRef = document.getElementById('board_id');
     if (boardRef){
         boardRef.addEventListener("click", e => {
             const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
-            if (card){
+            if (card && !card.classList.contains("is-flipped") && !game.waiting){
                 card.classList.toggle("is-flipped");
+                game.openCard(extractCardIdAndIdx(card.id));
             }
         })
     }
 }
 
-// game logic
+function extractCardIdAndIdx(htmlId: string){
+    const parts = htmlId.split("-");
+    return Number(parts[1]);
+}
+
+function buildWinnerOverlay(theme: Theme){
+    const confettiRef = document.getElementById('confetti-img') as HTMLImageElement;
+    confettiRef.src = theme === 'code_vibes' ? "/assets/img/confetti.png" : "";
+
+    const homeBtnRef = document.getElementById('home-btn') as HTMLLinkElement;
+    homeBtnRef.innerHTML = theme === 'code_vibes' ? "Back to start" : "Home";
+}
+
+function announceWinnerInOverlay(player: Player){
+    const winnerRef = document.getElementById('winner-announcement');
+    if (winnerRef) winnerRef.innerText = player + " Player";
+
+    const winnerImgRef = document.getElementById('winner-img') as HTMLImageElement;
+    if (winnerImgRef) winnerImgRef.src = "/assets/img/winners/chess_pawn_" + player + ".png";
+}
+
+function announceDrawInOverlay(firstPlayer: Player, secondPlayer: Player){
+    const startTextRef = document.getElementById('start-text');
+    if (startTextRef) startTextRef.innerText = "It's a tie!";
+
+    const winnerRef = document.getElementById('winner-announcement');
+    if (winnerRef) winnerRef.classList.toggle("d_none");
+
+    const firstImgRef = document.getElementById('winner-img') as HTMLImageElement;
+    if (firstImgRef) firstImgRef.src = "/assets/img/winners/chess_pawn_" + firstPlayer +".png";
+
+    const secondImgRef = document.getElementById('tie-img') as HTMLImageElement;
+    if (secondImgRef) secondImgRef.src = "/assets/img/winners/chess_pawn_" + secondPlayer + ".png";
+    secondImgRef.classList.toggle("d_none");
+}
+
+
+function toggleOverlay(overlayId: string){
+    const overlayRef = document.getElementById(overlayId);
+    if (overlayRef) overlayRef.classList.toggle("d_none");
+}
+
 
 class Game{
     score = {
@@ -296,15 +379,24 @@ class Game{
         orange: 0
     };
 
+    currentCards: number[] = [];
+    closedCards: number[] = [];
+    startPlayer: Player;
+
+    theme: Theme;
     boardSize: number;
     currentPlayer: Player;
     deckOfCards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     cards: number[];
+    waiting = false;
+    end = false;
 
-    constructor(boardSize: number, startPlayer: Player){
+    constructor(boardSize: number, startPlayer: Player, theme: Theme){
         this.boardSize = boardSize;
+        this.startPlayer = startPlayer;
         this.currentPlayer = startPlayer;
         this.cards = [];
+        this.theme = theme;
         if (boardSize <= this.deckOfCards.length*2)
         {
             this.getRandomCards();
@@ -322,4 +414,70 @@ class Game{
         }
         this.cards.sort(() => Math.random() - 0.5);
     }
+
+    openCard(cardIdx: number){
+        this.currentCards.push(cardIdx);
+        if(this.currentCards.length % 2 === 0){            
+            if(this.checkCardsForEquality()){
+                console.log("yey");
+                
+                this.score[this.currentPlayer] += 1;
+                setScoreOfPlayer(this.currentPlayer, this.theme, this.score[this.currentPlayer]);
+                if(this.isEndOfGame()){
+                    const secondPlayer = this.startPlayer === "blue" ? "orange" : "blue";
+                    setFinalScores(this.startPlayer, secondPlayer, this.score[this.startPlayer], this.score[secondPlayer]);
+                    if (this.isTie()){
+                        announceDrawInOverlay(this.startPlayer, secondPlayer);
+                    } else {
+                        announceWinnerInOverlay(this.currentPlayer);
+                    }
+                    toggleOverlay('game-over-overlay');
+                    setTimeout(() => {
+                        toggleOverlay('game-over-overlay');
+                        toggleOverlay('winner-overlay');
+                    }, 1500);
+                }
+            } else {
+                console.log("no");
+                this.waiting = true;
+                setTimeout(()=>{
+                    this.turnAroundCards();
+                    this.currentPlayer = this.currentPlayer === "blue" ? "orange" : "blue";
+                    displayCurrentPlayer(this.currentPlayer, this.theme);   
+                    this.waiting = false;                 
+                }, 1000);
+            }
+        }
+    }
+
+    isEndOfGame(){
+        this.end = this.score.blue + this.score.orange === this.boardSize/2;
+        return this.end;
+    }
+
+    checkCardsForEquality(){
+        return this.getCardId(this.currentCards[this.currentCards.length -1]) === this.getCardId(this.currentCards[this.currentCards.length -2]);
+    }
+
+    getCardId(cardIdx: number){
+        return this.cards[cardIdx];
+    }
+
+    turnAroundCards(){
+        this.turnAroundCard(this.currentCards.pop());
+        this.turnAroundCard(this.currentCards.pop());
+    }
+
+    turnAroundCard(cardIdx: number | undefined){
+        if (cardIdx !== undefined){
+            const card = document.getElementById(`card-${cardIdx}-id`);
+            card?.classList.toggle("is-flipped");            
+        }
+    }
+
+    isTie(){
+        return this.score.blue === this.score.orange;
+    }
+
+
 }

@@ -246,3 +246,108 @@ $exit-link-br: (
 );
 
 $page-bgdc: (code_vibes: #303131, gaming: #294F60, projects: #FFFFFF, food: #FFFFFF);
+
+$game_over_content_ff: (
+  code_vibes: 'RedRose-Regular',
+  gaming: '',
+  projects: '',
+  food: 'KleeOne-SemiBold'
+);
+
+$game_over_content_fs: (
+  code_vibes: 26px,
+  gaming: 42px,
+  projects: 42px,
+  food: 42px
+);
+
+$game_over_overlay_bgdc: (
+  code_vibes: #303131,
+  gaming: #294F60, 
+  projects: #1E7594, 
+  food: #F3832D
+);
+
+$winner_overlay_bgdc: (
+  code_vibes: #303131,
+  gaming: #294F60, 
+  projects: #1E7594, 
+  food: #FFFFFF
+);
+
+$winner_content_fs: (
+  code_vibes: 40px,
+  gaming: 28px,
+  projects: 40px,
+  food: 40px
+);
+
+$winner_content_fc: (
+  code_vibes: #FFFFFF,
+  gaming: #FFFFFF,
+  projects: #FFFFFF,
+  food: #A45212
+);
+
+$winner_lettering_ff: (
+  code_vibes: 'RedRose-Bold',
+  gaming: 'Orbitron-Bold',
+  projects: 'Figtree-Bold',
+  food: 'KleeOne-SemiBold'
+);
+
+$winner_lettering_fs: (
+  code_vibes: 60px,
+  gaming: 64px,
+  projects: 80px,
+  food: 80px
+);
+
+$winner_lettering_fc: (
+  code_vibes: #2298DB,
+  gaming: #2298DB,
+  projects: #FFFFFF,
+  food: #A45212
+);
+
+$home_btn_bgdc: (
+  code_vibes: rgba(134, 233, 214, 0.2),
+  gaming: rgba(237, 27, 118, 0.08),
+  projects: #BFE5F2,
+  food: #F3832D
+);
+
+$home_btn_fc: (
+  code_vibes: #FFFFFF,
+  gaming: #FFFFFF,
+  projects: #1E7594,
+  food: #FFFFFF
+);
+
+$home_btn_bxs: (
+  code_vibes: none,
+  gaming: none,
+  projects: none,
+  food: 3px 3px 5px 0px rgba(0, 0, 0, 0.2)
+);
+
+$home_btn_img_bxs: (
+  code_vibes: none,
+  gaming: none,
+  projects: none,
+  food: 3px 3px 6px 0px rgba(0, 0, 0, 0.25)
+);
+
+$home_btn_img_bgdc: (
+  code_vibes: none,
+  gaming: none,
+  projects: none,
+  food: #F7E6D5
+);
+
+$home_btn_p: (
+  code_vibes: 100px,
+  gaming: 0,
+  projects: 0,
+  food: 0
+);

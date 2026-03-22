@@ -115,6 +115,8 @@
 }
 
 
+
+
 @each $theme in maps.$themes {
     body.theme_#{$theme} {
         .board_page {
@@ -130,6 +132,101 @@
             position: relative;
 
             background-color: map.get(maps.$page-bgdc, $theme);
+        }
+
+        .game_over_overlay{
+            background-color: map.get(maps.$game_over_overlay_bgdc, $theme);
+        }
+
+        .game_over_content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            >img{
+                margin-bottom: 80px;
+            }
+            >span{
+                color: white;
+
+                font-size: map.get(maps.$game_over_content_fs, $theme);
+                font-family: map.get(maps.$game_over_content_ff, $theme);
+            }
+        }
+
+        .winner_overlay{
+            background-color: map.get(maps.$winner_overlay_bgdc, $theme);
+            overflow: hidden;
+        }
+
+        .winner_content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0px;
+            position: relative;
+            padding-top: map.get(maps.$home_btn_p, $theme);
+
+            .confetti{
+                position: absolute;
+                top: -200px;
+                overflow: hidden;
+            }
+
+            >span{
+                color: map.get(maps.$winner_content_fc, $theme);
+                font-size: map.get(maps.$winner_content_fs, $theme);
+                font-family: map.get(maps.$game_over_content_ff, $theme);
+            }
+            >h2{
+                text-transform: capitalize;
+                color: map.get(maps.$winner_lettering_fc, $theme);
+                font-size: map.get(maps.$winner_lettering_fs, $theme);
+                font-family: map.get(maps.$winner_lettering_ff, $theme);
+                margin-bottom: 70px;
+            }
+            .winner_img{
+                background-color: map.get(maps.$home_btn_img_bgdc, $theme);
+                box-shadow: map.get(maps.$home_btn_img_bxs, $theme);  
+                padding: 24px;
+                margin-bottom: 70px;
+            }
+            >a{
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                justify-content: center;
+                padding: 16px;
+                cursor: pointer;
+
+                border: map.get(maps.$exit-btn-bs, $theme) solid map.get(maps.$exit-btn-bc, $theme);
+                border-radius: map.get(maps.$exit-btn-br, $theme);
+                color: map.get(maps.$home_btn_fc, $theme);
+                font-family: map.get(maps.$exit-btn-ff, $theme);
+                font-size: map.get(maps.$exit-btn-fs, $theme);
+                background-color: map.get(maps.$home_btn_bgdc, $theme);
+
+                box-shadow: map.get(maps.$home_btn_bxs, $theme);
+                transition: transform 0.5s;
+
+                >div {
+                    display: contents;
+                }
+
+                &:hover{
+                    transform: scale(1.10);
+                }
+            }
+
+            .img_wrapper{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 24px;
+                margin-top: 24px;
+            }
         }
 
         .header_wrapper {
