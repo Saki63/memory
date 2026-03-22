@@ -16,7 +16,7 @@
                         <span>Current player:</span>
                         <div id="current_player_img_id"></div>
                     </div>
-                    <button class="exit_btn">
+                    <button onclick="toggleExitDialog()" class="exit_btn">
                         <div id="exit_btn_img_id"></div>
                         <span>Exit game</span>
                     </button>
@@ -29,8 +29,8 @@
             <div class="exit_dialog">
                 <span class="text">Are your sure you want to quit the game?</span>
                 <div>
-                    <button class="back_to_game_btn">Back to game</button>
-                    <a class="exit_link" href="">Exit game</a>
+                    <button onclick="toggleExitDialog()" class="back_to_game_btn">Back to game</button>
+                    <a class="exit_link" href="/">Exit game</a>
                 </div>
             </div>
         </div>

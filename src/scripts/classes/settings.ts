@@ -330,6 +330,10 @@ function addCardListener(game: Game){
     }
 }
 
+function toggleExitDialog(){
+    document.getElementById('exit-dialog-overlay')?.classList.toggle("d_none");
+}
+
 function extractCardIdAndIdx(htmlId: string){
     const parts = htmlId.split("-");
     return Number(parts[1]);

@@ -39,13 +39,9 @@
 }
 
 .radio::after {
-  content: url('../../../public/assets/img/line_3_small.png');
+  content: url('/assets/img/line_3_small.png');
   opacity: 0;
 }
-
-// .radio:hover::after {
-//   opacity: 1;
-// }
 
 .radio:has(input:checked)::after {
   opacity: 1;
