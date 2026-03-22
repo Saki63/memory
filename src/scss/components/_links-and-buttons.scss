@@ -1,0 +1,48 @@
+@use '../utils/mixins' as mi;
+@use '../utils/color-palette' as cp;
+@use '../utils/fonts';
+
+.primary_btn{
+    border: none;
+    padding: 16px;
+    @include mi.flex-center();
+    
+    font-family: 'RedRose-Bold';
+
+    background-color: cp.$secondary-yellow;
+    color: cp.$primary-dark;
+
+    transition: transform 0.5s;
+
+    &__icon{
+        height: 32px;
+        transition: transform 0.5s;
+    }
+
+    &:hover{
+        transform: scale(1.15);
+    }
+
+    &:hover &__icon{
+        transform: rotate(-35deg);
+    }
+}
+
+.play_btn{
+    margin-top: 80px;
+    font-size: 40px;
+
+    gap: 20px;
+
+    &__arrow_icon{
+        width: 33px;
+    }
+}
+
+.start_btn{
+    transition: transform 0.5s;
+    font-size: 20px;
+    
+    gap: 8px;
+
+}

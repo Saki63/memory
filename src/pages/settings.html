@@ -16,77 +16,77 @@
             <div class="settings_layout">
                 <section class="settings_left">
                     <div class="selection">
-                        <div class="title">
-                            <img src="/assets/img/palette.png" alt="">
+                        <div class="selection__title">
+                            <img src="/assets/img/palette.png" alt="Palette icon">
                             <h4>Game themes</h4>
                         </div>
-                        <div class="radio_buttons">
-                            <label onclick="changeTheme('code_vibes')" from="theme_code_vibes_id" class="radio">
-                                <input id="theme_code_vibes_id" type="radio" name="radio1">
-                                <span class="radio_custom"></span>
-                                <span class="text">Code vibes theme</span>
+                        <div class="selection__radio_btns">
+                            <label onclick="changeTheme('code_vibes')" from="theme-code_vibes-id" class="radio">
+                                <input id="theme-code_vibes-id" type="radio" name="radio1">
+                                <span class="radio__custom"></span>
+                                <span class="radio__text">Code vibes theme</span>
                             </label>
                             <label onclick="changeTheme('food')" from="theme_food_id" class="radio">
-                                <input id="theme_food_id" type="radio" name="radio1">
-                                <span class="radio_custom"></span>
-                                <span class="text">Food theme</span>
+                                <input id="theme-food-id" type="radio" name="radio1">
+                                <span class="radio__custom"></span>
+                                <span class="radio__text">Food theme</span>
                             </label>
                         </div>
                     </div>
                     <div class="selection">
-                        <div class="title">
-                            <img src="/assets/img/chess_pawn.png" alt="">
+                        <div class="selection__title">
+                            <img src="/assets/img/chess_pawn.png" alt="Chess pawn icon">
                             <h4>Choose player</h4>
                         </div>
-                        <div class="radio_buttons">
-                            <label onclick="changePlayer('blue')" from="player_blue_id" class="radio">
-                                <input id="player_blue_id" type="radio" name="radio2" checked>
-                                <span class="radio_custom"></span>
-                                <span class="text">Blue</span>
+                        <div class="selection__radio_btns">
+                            <label onclick="changePlayer('blue')" from="player-blue-id" class="radio">
+                                <input id="player-blue-id" type="radio" name="radio2" checked>
+                                <span class="radio__custom"></span>
+                                <span class="radio__text">Blue</span>
                             </label>
-                            <label onclick="changePlayer('orange')" from="player_orange_id" class="radio">
-                                <input id="player_orange_id" type="radio" name="radio2">
-                                <span class="radio_custom"></span>
-                                <span class="text">Orange</span>
+                            <label onclick="changePlayer('orange')" from="player-orange-id" class="radio">
+                                <input id="player-orange-id" type="radio" name="radio2">
+                                <span class="radio__custom"></span>
+                                <span class="radio__text">Orange</span>
                             </label>
                         </div>
                     </div>
                     <div class="selection">
-                        <div class="title">
-                            <img src="/assets/img/style.png" alt="">
+                        <div class="selection__title">
+                            <img src="/assets/img/style.png" alt="Size icon">
                             <h4>Board size</h4>
                         </div>
-                        <div class="radio_buttons">
-                            <label onclick="changeBoardSize(16)" from="board_size_16_id" class="radio">
-                                <input id="board_size_16_id" type="radio" name="radio3" checked>
-                                <span class="radio_custom"></span>
-                                <span class="text">16 cards</span>
+                        <div class="selection__radio_btns">
+                            <label onclick="changeBoardSize(16)" from="board-size-16-id" class="radio">
+                                <input id="board-size-16-id" type="radio" name="radio3" checked>
+                                <span class="radio__custom"></span>
+                                <span class="radio__text">16 cards</span>
                             </label>
-                            <label onclick="changeBoardSize(24)" from="board_size_24_id" class="radio">
-                                <input id="board_size_24_id" type="radio" name="radio3">
-                                <span class="radio_custom"></span>
-                                <span class="text">24 cards</span>
+                            <label onclick="changeBoardSize(24)" from="board-size-24-id" class="radio">
+                                <input id="board-size-24-id" type="radio" name="radio3">
+                                <span class="radio__custom"></span>
+                                <span class="radio__text">24 cards</span>
                             </label>
-                            <label onclick="changeBoardSize(36)" from="board_size_36_id" class="radio">
-                                <input id="board_size_36_id" type="radio" name="radio3">
-                                <span class="radio_custom"></span>
-                                <span class="text">36 cards</span>
+                            <label onclick="changeBoardSize(36)" from="board-size-36-id" class="radio">
+                                <input id="board-size-36-id" type="radio" name="radio3">
+                                <span class="radio__custom"></span>
+                                <span class="radio__text">36 cards</span>
                             </label>
                         </div>
                     </div>
                 </section>
                 <section class="settings_right">
-                    <img id="theme_cover" src="/assets/img/theme_cover/code_vibes.png" alt="">
+                    <img id="theme-cover" src="/assets/img/theme_cover/code_vibes.png" alt="">
                     <div class="choosen_settings_and_start_button">
                         <div class="choosen_settings">
                             <span>Game theme</span>
-                            <img src="/assets/img/line_6_slash.png" alt="">
+                            <img src="/assets/img/line_6_slash.png" alt="Yellow slash">
                             <span>Player</span>
-                            <img src="/assets/img/line_6_slash.png" alt="">
+                            <img src="/assets/img/line_6_slash.png" alt="Yellow slash">
                             <span>Board size</span>
                         </div>
-                        <a onclick="saveSettings()" class="start_btn primary_a" href="board.html">
-                            <img class="smart_display_icon" src="/assets/img/smart_display.png" alt="">
+                        <a onclick="saveSettings()" class="start_btn primary_btn" href="board.html">
+                            <img class="primary_btn__icon" src="/assets/img/smart_display.png" alt="">
                             <span>Start</span>
                         </a>
                     </div>

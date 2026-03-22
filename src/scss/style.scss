@@ -1,5 +1,5 @@
 @use './components/selection';
-@use './components/links';
+@use './components/links-and-buttons';
 @use './components/headline';
 @use './pages/board';
 @use './pages/settings';
@@ -18,7 +18,6 @@ button {
         cursor: pointer;
     }
 }
-
 
 a {
     text-decoration: none;

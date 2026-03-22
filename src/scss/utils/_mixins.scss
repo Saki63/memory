@@ -21,3 +21,49 @@
     justify-content: $jc;
     gap: $g;
 }
+
+@mixin flex-start($g: 16px){
+    display: flex;
+    align-items: center;
+    gap: $g;
+}
+
+@mixin flex-top-row($g: 16px){
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: $g;
+}
+
+
+
+
+@mixin font-almarai-regular-48($c: white){
+    font-family: 'Almarai-Regular';
+    font-size: 48px;
+    color: $c;
+}
+
+@mixin font-almarai-regular-20($c: white){
+    font-family: 'Almarai-Regular';
+    font-size: 20px;
+    color: $c;
+}
+
+@mixin font-almarai-bold-24($c: white){
+    font-family: 'Almarai-Bold';
+    font-size: 24px;
+    color: $c;
+}
+
+@mixin font-red-rose-bold-140($c: white){
+    font-family: 'RedRose-Bold';
+    font-size: 140px;
+    color: $c;
+}
+
+@mixin font-red-rose-bold-54($c: white){
+    font-family: 'RedRose-Bold';
+    font-size: 54px;
+    color: $c;
+}

@@ -4,7 +4,7 @@
 
 
 .selection{
-    .title{
+    &__title{
         font-family: 'Almarai-Bold';
         font-size: 24px;
         color: cp.$primary-dark;
@@ -15,11 +15,10 @@
         margin-bottom: 16px;
     }
 
-    .radio_buttons{
+    &__radio_btns{
         display: flex;
         flex-direction: column;
         gap: 16px;
-
         padding-left: 42px;
     }
 }
@@ -29,53 +28,53 @@
     align-items: center;
     cursor: pointer;
     gap: 8px;
-
-    *{
-    cursor: pointer;
-    }
     font-size: 20px;
     color: cp.$primary-dark;
     font-family: 'Almarai-Regular';
-}
 
-.radio::after {
-  content: url('/assets/img/line_3_small.png');
-  opacity: 0;
-}
+    * {
+        cursor: pointer;
+    }
 
-.radio:has(input:checked)::after {
-  opacity: 1;
-}
+    &::after{
+        content: url('/assets/img/line_3_small.png');
+        opacity: 0;        
+    }
 
-.radio input {
-  display: none;
-}
+    &:has(input:checked)::after {
+        opacity: 1;
+    }
 
-.radio_custom {
-    position: relative;
-    height: 20px;
-    width: 20px;
-    background-color: cp.$light;
-    border-radius: 50%;
-    border: 3px solid cp.$primary-dark;
-}
-
-.radio input:checked + .radio_custom::after {
-    content: "";
-    height: 8px;
-    width: 8px;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    background-color: black;
-    position: absolute;
-    transform: translate(-50%, -50%);
-}
-
-.radio:hover .text {
-    font-weight: bold;
-}
-
-.radio:has(input:checked) {
-    font-weight: bold;
+    input {
+      display: none;
+    }
+    
+    &__custom {
+        position: relative;
+        height: 20px;
+        width: 20px;
+        background-color: cp.$light;
+        border-radius: 50%;
+        border: 3px solid cp.$primary-dark;
+    }
+    
+    input:checked + &__custom::after {
+        content: "";
+        height: 8px;
+        width: 8px;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        background-color: black;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+    
+    &:hover &__text {
+        font-weight: bold;
+    }
+    
+    &:has(input:checked) {
+        font-weight: bold;
+    }
 }

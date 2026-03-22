@@ -33,7 +33,7 @@
         color: cp.$light;
     }
 
-    .controller_icon_bg{
+    &__bg_controller{
         position: absolute;
         left: -220px;
         bottom: -157px;
@@ -46,27 +46,5 @@
     }
 }
 
-.play_a{
-    margin-top: 80px;
-    transition: transform 0.5s;
-    font-size: 40px;
-    
-    .controller_icon{
-        height: 32px;
-        transition: transform 0.5s;
-    }
-
-    .arrow_icon{
-        width: 33px;
-    }
-
-    &:hover{
-        transform: scale(1.25);
-    }
-
-    &:hover .controller_icon{
-        transform: rotate(-35deg);
-    }
-}
 
 

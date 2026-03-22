@@ -139,12 +139,12 @@ function setThemeCover(theme: Theme){
 function setSettings(settingTheme: string, settingPlayer: string, settingBoardSize: string){
     setSetting(themeTypes, "theme", settingTheme)
     setSetting(playerTypes, "player", settingPlayer)
-    setSetting(boardSizeTypes, "board_size", settingBoardSize)
+    setSetting(boardSizeTypes, "board-size", settingBoardSize)
 }
 
 function setSetting(settingTypes: string[], setting: string, selection: string | undefined){
     for (const settingType of settingTypes){
-        const id = setting  + "_" + settingType + "_id";
+        const id = setting  + "-" + settingType + "-id";
         const inputRef = document.getElementById(id) as HTMLInputElement; 
         inputRef.checked = selection === settingType ? true : false;
     }
