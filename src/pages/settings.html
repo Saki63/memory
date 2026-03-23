@@ -24,12 +24,12 @@
                             <label onclick="changeTheme('code_vibes')" from="theme-code_vibes-id" class="radio">
                                 <input id="theme-code_vibes-id" type="radio" name="radio1">
                                 <span class="radio__custom"></span>
-                                <span class="radio__text">Code vibes theme</span>
+                                <span id="theme-code_vibes-text-id" class="radio__text">Code vibes theme</span>
                             </label>
                             <label onclick="changeTheme('food')" from="theme_food_id" class="radio">
                                 <input id="theme-food-id" type="radio" name="radio1">
                                 <span class="radio__custom"></span>
-                                <span class="radio__text">Food theme</span>
+                                <span id="theme-food-text-id" class="radio__text">Food theme</span>
                             </label>
                         </div>
                     </div>
@@ -40,14 +40,14 @@
                         </div>
                         <div class="selection__radio_btns">
                             <label onclick="changePlayer('blue')" from="player-blue-id" class="radio">
-                                <input id="player-blue-id" type="radio" name="radio2" checked>
+                                <input id="player-blue-id" type="radio" name="radio2">
                                 <span class="radio__custom"></span>
-                                <span class="radio__text">Blue</span>
+                                <span id="player-blue-text-id" class="radio__text">Blue</span>
                             </label>
                             <label onclick="changePlayer('orange')" from="player-orange-id" class="radio">
                                 <input id="player-orange-id" type="radio" name="radio2">
                                 <span class="radio__custom"></span>
-                                <span class="radio__text">Orange</span>
+                                <span id="player-orange-text-id" class="radio__text">Orange</span>
                             </label>
                         </div>
                     </div>
@@ -58,19 +58,19 @@
                         </div>
                         <div class="selection__radio_btns">
                             <label onclick="changeBoardSize(16)" from="board-size-16-id" class="radio">
-                                <input id="board-size-16-id" type="radio" name="radio3" checked>
+                                <input id="board-size-16-id" type="radio" name="radio3">
                                 <span class="radio__custom"></span>
-                                <span class="radio__text">16 cards</span>
+                                <span id="board-size-16-text-id" class="radio__text">16 cards</span>
                             </label>
                             <label onclick="changeBoardSize(24)" from="board-size-24-id" class="radio">
                                 <input id="board-size-24-id" type="radio" name="radio3">
                                 <span class="radio__custom"></span>
-                                <span class="radio__text">24 cards</span>
+                                <span id="board-size-24-text-id" class="radio__text">24 cards</span>
                             </label>
                             <label onclick="changeBoardSize(36)" from="board-size-36-id" class="radio">
                                 <input id="board-size-36-id" type="radio" name="radio3">
                                 <span class="radio__custom"></span>
-                                <span class="radio__text">36 cards</span>
+                                <span id="board-size-36-text-id" class="radio__text">36 cards</span>
                             </label>
                         </div>
                     </div>
@@ -78,14 +78,14 @@
                 <section class="settings_right">
                     <img id="theme-cover" src="/assets/img/theme_cover/code_vibes.png" alt="">
                     <div class="choosen_settings_and_start_button">
-                        <div class="choosen_settings">
-                            <span>Game theme</span>
-                            <img src="/assets/img/line_6_slash.png" alt="Yellow slash">
-                            <span>Player</span>
-                            <img src="/assets/img/line_6_slash.png" alt="Yellow slash">
-                            <span>Board size</span>
+                        <div id="choosen-setting-id" class="choosen_settings">
+                            <span id="theme-setting-id">Game theme</span>
+                            <img id="slash1-id" src="/assets/img/line_6_slash.png" alt="Yellow slash">
+                            <span id="player-setting-id">Player</span>
+                            <img id="slash2-id" src="/assets/img/line_6_slash.png" alt="Yellow slash">
+                            <span id="board-size-setting-id">Board size</span>
                         </div>
-                        <a onclick="saveSettings()" class="start_btn primary_btn" href="board.html">
+                        <a id="start-btn-id" onclick="saveSettings()" class="start_btn start_btn--disabled primary_btn">
                             <img class="primary_btn__icon" src="/assets/img/smart_display.png" alt="">
                             <span>Start</span>
                         </a>

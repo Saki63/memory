@@ -27,7 +27,6 @@
 
 .settings_left{
     @include mi.flex-top($g: 48px);
-    flex: 1;
 }
 
 .settings_right{

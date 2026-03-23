@@ -13,6 +13,11 @@ class Settings{
     private theme: Theme;
     private player: Player;
     private boardSize: BoardSize;
+    private settingsSet = {
+        theme: false,
+        player: false,
+        boardSize: false,
+    }
 
     constructor(){
         this.theme = 'code_vibes';
@@ -22,14 +27,17 @@ class Settings{
 
     setTheme(theme: Theme){
         this.theme = theme;
+        this.settingsSet.theme = true;
     }
 
     setPlayer(player: Player){
         this.player = player;
+        this.settingsSet.player = true;
     }
 
     setBoardSize(boardSize: BoardSize){
         this.boardSize = boardSize;
+        this.settingsSet.boardSize = true;
     }
 
     getTheme(){
@@ -81,13 +89,17 @@ class Settings{
         localStorage.setItem("memory_setting_player", this.player);
         localStorage.setItem("memory_setting_boardSize", this.boardSize);
     }
+
+    isAllSet(){
+        return this.settingsSet.theme && this.settingsSet.player && this.settingsSet.boardSize;
+    }
 }
 
 function initSettingsPage(){
     settings = new Settings();
-    settings.readStorage('all');
-    setSettings(settings.getTheme(), settings.getPlayer(), settings.getBoardSize());
-    setThemeCover(settings.getTheme());
+    //settings.readStorage('all');
+    //setSettings(settings.getTheme(), settings.getPlayer(), settings.getBoardSize());
+    //setThemeCover(settings.getTheme());
 }
 
 function initBoardPage(){
@@ -114,18 +126,28 @@ function initBoardPage(){
 function changeTheme(theme: Theme){
     settings?.setTheme(theme);
     setThemeCover(theme);
+    setSettingOverview('theme-setting-id', 'theme');
+    disableButton();
 }
 
 function changePlayer(player: Player){
     settings?.setPlayer(player);
+    setSettingOverview('player-setting-id', 'player');
+    disableButton();
 }
 
 function changeBoardSize(boardSize: BoardSize){
     settings?.setBoardSize(boardSize);
+    setSettingOverview('board-size-setting-id', 'board-size');
+    disableButton();
 }
 
 function saveSettings(){
     settings?.writeStorage();
+    if(settings?.isAllSet()){
+        const linkRef = document.getElementById('start-btn-id') as HTMLAnchorElement;
+        linkRef.href = "board.html";
+    }
 }
 
 
@@ -148,6 +170,39 @@ function setSetting(settingTypes: string[], setting: string, selection: string |
         const id = setting  + "-" + settingType + "-id";
         const inputRef = document.getElementById(id) as HTMLInputElement; 
         inputRef.checked = selection === settingType ? true : false;
+    }
+}
+
+function setSettingOverview(htmlId: string, setting: 'theme' | 'player' | 'board-size'){
+    const settingRef = document.getElementById(htmlId);
+    
+    if (settingRef){
+        switch(setting){
+            case 'theme':
+                const themeTextRef = document.getElementById(`${setting}-${settings?.getTheme()}-text-id`) as HTMLSpanElement;
+                settingRef.innerText = themeTextRef.innerText;
+                break;
+            case 'player':
+                const playerTextRef = document.getElementById(`${setting}-${settings?.getPlayer()}-text-id`) as HTMLSpanElement;
+                settingRef.innerText = playerTextRef.innerText;
+                break;
+            case 'board-size':
+                const boardSizeTextRef = document.getElementById(`${setting}-${settings?.getBoardSize()}-text-id`) as HTMLSpanElement;
+                settingRef.innerText = boardSizeTextRef.innerText;
+                break;
+            default:
+                console.error('Setting not available!');
+        }
+    }
+}
+
+function disableButton(){
+    if(settings?.isAllSet()){
+        document.getElementById('start-btn-id')?.classList.remove('start_btn--disabled');
+        const slash1Ref = document.getElementById('slash1-id') as HTMLImageElement;
+        const slash2Ref = document.getElementById('slash2-id') as HTMLImageElement;
+        slash1Ref.src = "/assets/img/line_3_obliquely.png";
+        slash2Ref.src = "/assets/img/line_3_obliquely.png";
     }
 }
 

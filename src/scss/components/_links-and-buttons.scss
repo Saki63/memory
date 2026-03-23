@@ -48,6 +48,17 @@
     
     gap: 8px;
 
+    &--disabled{
+        background-color: #DBDBD6;
+        opacity: 0.5;
+        transform: none !important;
+        cursor: default !important;
+
+        * {
+            transform: none !important;
+            cursor: default !important;
+        }
+    }
 }
 
 .exit_btn{
