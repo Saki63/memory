@@ -93,10 +93,12 @@
 
     height: 100vh;
     max-height: 100%;
+
+    &--background{
+        animation: 750ms linear easeInBackgroundColorOverlay;
+        animation-fill-mode: forwards;
+    }
 }
-
-
-
 
 @each $theme in maps.$themes {
     body.theme_#{$theme} {
@@ -218,6 +220,13 @@
             padding: 32px 24px;
             max-width: 536px;
             gap: 40px;
+            
+            animation-delay: 2s;
+            animation: 750ms ease-in easeInDialog;
+            animation-fill-mode: forwards;
+
+            opacity: 0;
+            transform: translateY(100px);
 
             .text {
                 text-align: center;
@@ -234,6 +243,7 @@
             background-color: map.get(maps.$exit-dialog-bgdc, $theme);
             border-radius: map.get(maps.$exit-dialog-br, $theme);
         }
+
 
         .back_to_game_btn{
             padding: 16px;
@@ -255,4 +265,12 @@
             border-radius: map.get(maps.$exit-link-br, $theme);
         }
     }
+}
+
+@keyframes easeInDialog {
+    100% {opacity: 1; transform: translateY(0px);}
+}
+
+@keyframes easeInBackgroundColorOverlay {
+    100% {background-color: rgba(0, 0, 0, 0.5);}
 }

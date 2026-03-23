@@ -456,6 +456,7 @@ function addExitBtnListener(theme: Theme){
 
 function toggleExitDialog(){
     document.getElementById('exit-dialog-overlay')?.classList.toggle("d_none");
+    // document.getElementById('exit-dialog-id')?.classList.toggle("exit_dialog--display");
 }
 
 function extractCardIdAndIdx(htmlId: string){
