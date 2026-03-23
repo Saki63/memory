@@ -1,0 +1,48 @@
+@use '../utils/variables';
+@use '../utils/mixins' as mi;
+@use '../utils/color-palette' as cp;
+@use '../utils/maps';
+@use '../utils/fonts';
+@use "sass:map";
+
+.board_header{
+    padding: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    max-width: 100%;
+
+    @include mi.flex-center($g: 0);
+}
+
+
+@each $theme in maps.$themes {
+    body.theme_#{$theme} {
+        .header_wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            width: 100%;
+            max-width: variables.$limit;
+            padding: 16px;
+
+            background-color: map.get(maps.$header_wrapper_bgc, $theme);
+            border-radius: map.get(maps.$header_wrapper_br, $theme);
+        }
+
+        .current_player {
+            font-size: map.get(maps.$current_player_fs, $theme);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            font-family: map.get(maps.$current_player_ff, $theme);
+            color: map.get(maps.$current_player_fc, $theme);
+
+            > div {
+                display: contents;
+            }
+        }
+    }
+}

@@ -1,6 +1,9 @@
+@use '../utils/variables';
 @use '../utils/mixins' as mi;
 @use '../utils/color-palette' as cp;
+@use '../utils/maps';
 @use '../utils/fonts';
+@use "sass:map";
 
 .primary_btn{
     border: none;
@@ -45,4 +48,35 @@
     
     gap: 8px;
 
+}
+
+.exit_btn{
+    @include mi.flex-center($g: 8px);
+    padding: 16px;
+}
+
+@each $theme in maps.$themes {
+    body.theme_#{$theme} {
+        .exit_btn--theme{
+            border: map.get(maps.$exit-btn-b, $theme);
+            border-radius: map.get(maps.$exit-btn-br, $theme);
+            color: map.get(maps.$exit-btn-fc, $theme);
+            font-family: map.get(maps.$exit-btn-ff, $theme);
+            font-size: map.get(maps.$exit-btn-fs, $theme);
+            background-color: map.get(maps.$exit-btn-bgdc, $theme);
+            // margin: 3px;
+
+            >div{
+                height: map.get(maps.$exit-btn-svg, $theme);
+            }
+
+            &:hover{
+                border: map.get(maps.$exit-btn-hover-b, $theme);
+                color: #FFFF;
+                background-color: map.get(maps.$exit-btn-hover-bgdc, $theme);    
+                // margin: map.get(maps.$exit-btn-m, $theme); 
+                // box-shadow: 0 0 0 3px #4DD5BC,
+            }
+        }
+    }
 }

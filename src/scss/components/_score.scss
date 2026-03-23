@@ -1,0 +1,44 @@
+@use '../utils/variables';
+@use '../utils/mixins' as mi;
+@use '../utils/color-palette' as cp;
+@use '../utils/maps';
+@use '../utils/fonts';
+@use "sass:map";
+
+
+@each $player, $color in maps.$player_color {
+    .score__player--#{$player} {
+        color: $color;
+    }
+}
+
+@each $theme in maps.$themes {
+    body.theme_#{$theme} {
+        .score {
+            display: flex;
+            flex-direction: row;
+            gap: map.get(maps.$score_g, $theme);
+            padding: 16px;
+        
+            &__player{
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                >img{
+                    height: map.get(maps.$score_player_img_height, $theme);
+                }
+
+                >span{
+                    text-transform: capitalize;
+                    white-space: nowrap;
+                }  
+            }
+
+            background-color: map.get(maps.$score_bgc, $theme);
+            border-radius: map.get(maps.$score_br, $theme);
+            font-family: map.get(maps.$fonts_bold, $theme);
+            font-size: map.get(maps.$score_fs, $theme)
+        }
+    }
+}

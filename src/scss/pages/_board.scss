@@ -14,25 +14,6 @@
     padding: 30px;
 }
 
-.header{
-    padding: 16px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    max-width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-@each $player, $color in maps.$player_color {
-    .player_score_#{$player} {
-        color: $color;
-    }
-}
-
 .board{
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -201,7 +182,7 @@
                 padding: 16px;
                 cursor: pointer;
 
-                border: map.get(maps.$exit-btn-bs, $theme) solid map.get(maps.$exit-btn-bc, $theme);
+                border: map.get(maps.$exit-btn-b, $theme);
                 border-radius: map.get(maps.$exit-btn-br, $theme);
                 color: map.get(maps.$home_btn_fc, $theme);
                 font-family: map.get(maps.$exit-btn-ff, $theme);
@@ -226,85 +207,6 @@
                 justify-content: center;
                 gap: 24px;
                 margin-top: 24px;
-            }
-        }
-
-        .header_wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            width: 100%;
-            max-width: variables.$limit;
-            padding: 16px;
-
-            background-color: map.get(maps.$header_wrapper_bgc, $theme);
-            border-radius: map.get(maps.$header_wrapper_br, $theme);
-        }
-
-        .score {
-            display: flex;
-            flex-direction: row;
-            gap: map.get(maps.$score_g, $theme);
-            padding: 16px;
-        
-            .score_player{
-                display: flex;
-                align-items: center;
-                gap: 8px;
-
-                >img{
-                    height: map.get(maps.$score_player_img_height, $theme);
-                }
-
-                > span{
-                    text-transform: capitalize;
-                    white-space: nowrap;
-                }  
-            }
-
-            background-color: map.get(maps.$score_bgc, $theme);
-            border-radius: map.get(maps.$score_br, $theme);
-            font-family: map.get(maps.$fonts_bold, $theme);
-            font-size: map.get(maps.$score_fs, $theme)
-        }
-
-        .current_player {
-            font-size: map.get(maps.$current_player_fs, $theme);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-
-            font-family: map.get(maps.$current_player_ff, $theme);
-            color: map.get(maps.$current_player_fc, $theme);
-
-            > div {
-                display: contents;
-            }
-        }
-
-        .exit_btn{
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            cursor: pointer;
-
-            border: map.get(maps.$exit-btn-bs, $theme) solid map.get(maps.$exit-btn-bc, $theme);
-            border-radius: map.get(maps.$exit-btn-br, $theme);
-            color: map.get(maps.$exit-btn-fc, $theme);
-            font-family: map.get(maps.$exit-btn-ff, $theme);
-            font-size: map.get(maps.$exit-btn-fs, $theme);
-            background-color: map.get(maps.$exit-btn-bgdc, $theme);
-
-            transition: transform 0.5s;
-
-            >div {
-                display: contents;
-            }
-
-            &:hover{
-                transform: scale(1.10);
             }
         }
 

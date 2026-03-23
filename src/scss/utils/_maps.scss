@@ -63,18 +63,11 @@ $current_player_fs: (
   food: 32px
 );
 
-$exit-btn-bc: (
-  code_vibes: #4DD5BC,
-  gaming: #E71C4F,
-  projects: transparent,
-  food: #F3832D
-);
-
-$exit-btn-bs: (
-  code_vibes: 1px,
-  gaming: 2px,
-  projects: 0px,
-  food: 3px
+$exit-btn-b: (
+  code_vibes: 1px solid #4DD5BC,
+  gaming: 2px solid #E71C4F,
+  projects: 0px solid transparent,
+  food: 3px solid #F3832D
 );
 
 $exit-btn-br: (
@@ -111,6 +104,72 @@ $exit-btn-bgdc: (
   projects: rgba(191, 229, 242, 1),
   food: #FFF9F2
 );
+
+$exit-btn-bgd-img: (
+  code_vibes: url('/assets/img/exit.png'),
+  gaming: url('/assets/img/exit.png'),
+  projects: url('/assets/img/exit-projects.png'),
+  food: url('/assets/img/exit-food.png'),
+);
+
+// $exit-btn-b: (
+//   code_vibes: 1px solid #4DD5BC,
+//   gaming: 2px solid #E71C4F,
+//   projects: 0px solid transparent,
+//   food: 3px solid #F3832D
+// );
+
+$exit-btn-hover-b: (
+  code_vibes: 3px solid #4DD5BC,
+  gaming: 3px solid #E71C4F,
+  projects: 0px solid transparent,
+  food: 3px solid transparent
+);
+
+
+
+
+$exit-btn-m: (
+  code_vibes: 1px,
+  gaming: -1px,
+  projects: 0px,
+  food: -3px
+);
+
+
+
+
+$exit-btn-hover-bgdc: (
+  code_vibes: rgba(134, 233, 214, 0.26),
+  gaming: rgba(237, 27, 118, 0.14),
+  projects: rgba(30, 117, 148, 1),
+  food: rgba(243, 131, 45, 1)
+);
+
+$exit-btn-hover-bgdc: (
+  code_vibes: rgba(134, 233, 214, 0.26),
+  gaming: rgba(237, 27, 118, 0.14),
+  projects: rgba(30, 117, 148, 1),
+  food: rgba(243, 131, 45, 1)
+);
+
+$exit-btn-hover-bgd-img: (
+  code_vibes: url('/assets/img/exit.png'),
+  gaming: url('/assets/img/exit-gaming.png'),
+  projects: url('/assets/img/exit.png'),
+  food: url('/assets/img/exit.png'),
+);
+
+$exit-btn-svg: (
+  code_vibes: 33px,
+  gaming: 22px,
+  projects: 22px,
+  food: 22px
+);
+
+
+
+
 
 $exit-dialog-bgdc: (
   code_vibes: #FFFFFF,
