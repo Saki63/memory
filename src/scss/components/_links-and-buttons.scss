@@ -62,8 +62,12 @@
 }
 
 .exit_btn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
     @include mi.flex-center($g: 8px);
     padding: 16px;
+    margin: 16px;
 }
 
 @each $theme in maps.$themes {

@@ -16,6 +16,9 @@
     @include mi.flex-center($g: 0);
 }
 
+.btn_placeholder{
+    width: 200px;
+}
 
 @each $theme in maps.$themes {
     body.theme_#{$theme} {
@@ -26,6 +29,7 @@
             width: 100%;
             max-width: variables.$limit;
             padding: 16px;
+            position: relative;
 
             background-color: map.get(maps.$header_wrapper_bgc, $theme);
             border-radius: map.get(maps.$header_wrapper_br, $theme);
