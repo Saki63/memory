@@ -100,7 +100,6 @@ function initSettingsPage(){
 }
 
 function clearAllCheckbox(){
-    const id = 'theme-' + settings?.getTheme() + "-id";
     if (settings){
         clearCheckbox('theme', settings.getTheme());
         clearCheckbox('player', settings.getPlayer());
