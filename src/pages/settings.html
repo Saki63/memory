@@ -6,7 +6,7 @@
     <title>Memory/Settings</title>
     <script src="../scripts/classes/settings.ts"></script>
 </head>
-<body onload="initSettingsPage()">
+<body onload="initSettingsPage()" onunload="clearAllCheckbox()">
     <main class="settings_page">
         <div class="settings_content">
             <div class="headline">

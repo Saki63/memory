@@ -70,24 +70,24 @@ class Settings{
     }
 
     readStorageTheme(){
-        const storageTheme = localStorage.getItem('memory_setting_theme');
+        const storageTheme = sessionStorage.getItem('memory_setting_theme');
         if (storageTheme && themeTypes.includes(storageTheme)) this.theme = storageTheme as Theme;
     }
 
     readStoragePlayer(){
-        const storagePlayer = localStorage.getItem('memory_setting_player');
+        const storagePlayer = sessionStorage.getItem('memory_setting_player');
         if (storagePlayer && playerTypes.includes(storagePlayer)) this.player = storagePlayer as Player;
     }
 
     readStorageBoardSize(){
-        const storageBoardSize = localStorage.getItem('memory_setting_boardSize');
+        const storageBoardSize = sessionStorage.getItem('memory_setting_boardSize');
         if (storageBoardSize && boardSizeTypes.includes(storageBoardSize)) this.boardSize = storageBoardSize as BoardSize;
     }
 
     writeStorage(){
-        localStorage.setItem("memory_setting_theme", this.theme);
-        localStorage.setItem("memory_setting_player", this.player);
-        localStorage.setItem("memory_setting_boardSize", this.boardSize);
+        sessionStorage.setItem("memory_setting_theme", this.theme);
+        sessionStorage.setItem("memory_setting_player", this.player);
+        sessionStorage.setItem("memory_setting_boardSize", this.boardSize);
     }
 
     isAllSet(){
@@ -97,9 +97,23 @@ class Settings{
 
 function initSettingsPage(){
     settings = new Settings();
-    //settings.readStorage('all');
-    //setSettings(settings.getTheme(), settings.getPlayer(), settings.getBoardSize());
-    //setThemeCover(settings.getTheme());
+}
+
+function clearAllCheckbox(){
+    const id = 'theme-' + settings?.getTheme() + "-id";
+    if (settings){
+        clearCheckbox('theme', settings.getTheme());
+        clearCheckbox('player', settings.getPlayer());
+        clearCheckbox('board-size', settings.getBoardSize());
+    }
+}
+
+function clearCheckbox(setting: 'theme' | 'player' | 'board-size', radio: string){
+    const htmlId = setting + '-' + radio + "-id";
+    const radioBtnRef = document.getElementById(htmlId) as HTMLInputElement;
+    if (radioBtnRef){
+        radioBtnRef.checked = false;
+    }
 }
 
 function initBoardPage(){
