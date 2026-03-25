@@ -79,7 +79,6 @@
             font-family: map.get(maps.$exit-btn-ff, $theme);
             font-size: map.get(maps.$exit-btn-fs, $theme);
             background-color: map.get(maps.$exit-btn-bgdc, $theme);
-            // margin: 3px;
 
             >div{
                 height: map.get(maps.$exit-btn-svg, $theme);
@@ -88,9 +87,7 @@
             &:hover{
                 border: map.get(maps.$exit-btn-hover-b, $theme);
                 color: #FFFF;
-                background-color: map.get(maps.$exit-btn-hover-bgdc, $theme);    
-                // margin: map.get(maps.$exit-btn-m, $theme); 
-                // box-shadow: 0 0 0 3px #4DD5BC,
+                background-color: map.get(maps.$exit-btn-hover-bgdc, $theme);
             }
         }
     }

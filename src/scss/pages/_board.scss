@@ -251,8 +251,12 @@
             font-size: map.get(maps.$back-to-game-fs, $theme);
             color: map.get(maps.$back-to-game-fc, $theme);
             background-color: map.get(maps.$back-to-game-bgdc, $theme);
-            border: map.get(maps.$back-to-game-bs, $theme) solid map.get(maps.$back-to-game-bc, $theme);
+            border: map.get(maps.$back-to-game-b, $theme);
             border-radius: map.get(maps.$back-to-game-br, $theme);
+
+            &:hover{
+                background-color: map.get(maps.$back-to-game-hover-bgdc, $theme);
+            }
         }
 
         .exit_link{
@@ -263,6 +267,11 @@
             background-color: map.get(maps.$exit-link-bgdc, $theme);
             border: map.get(maps.$exit-link-bs, $theme) solid map.get(maps.$exit-link-bc, $theme);
             border-radius: map.get(maps.$exit-link-br, $theme);
+
+            &:hover{
+                background-color: map.get(maps.$exit-link-hover-bgdc, $theme);
+                // color: map.get(maps.$back-to-game-fc, $theme);
+            }
         }
     }
 }

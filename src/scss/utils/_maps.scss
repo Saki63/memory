@@ -234,19 +234,41 @@ $back-to-game-bgdc: (
   food: #FFAB3E
 );
 
-$back-to-game-bs: (
-  code_vibes: 2px,
-  gaming: 1px,
-  projects: 0px,
-  food: 3px
-);
 
-$back-to-game-bc: (
-  code_vibes: #66CFBC,
-  gaming: #E71C4F,
+$back-to-game-hover-bgdc: (
+  code_vibes: #66CFBCB2,
+  gaming: #ED1B76,
   projects: #BFE5F2,
   food: #F3832D
 );
+
+$back-to-game-b: (
+  code_vibes: 3px solid #66CFBC,
+  gaming: 1px solid #E71C4F,
+  projects: 0px solid #BFE5F2,
+  food: 3px solid #F3832D
+);
+
+$exit-link-hover-bgdc: (
+  code_vibes: #66cfbc57,
+  gaming: #ED1B76,
+  projects: #BFE5F2,
+  food: #f3832d3e
+);
+
+// $back-to-game-bs: (
+//   code_vibes: 2px,
+//   gaming: 1px,
+//   projects: 0px,
+//   food: 3px
+// );
+
+// $back-to-game-bc: (
+//   code_vibes: #66CFBC,
+//   gaming: #E71C4F,
+//   projects: #BFE5F2,
+//   food: #F3832D
+// );
 
 $back-to-game-br: (
   code_vibes: 0px,
