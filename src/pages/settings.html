@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory/Settings</title>
-    <script src="../scripts/classes/settings.ts"></script>
+    <script type="module" src="/src/scripts/settings.ts"></script>
 </head>
-<body onload="initSettingsPage()" onunload="clearAllCheckbox()">
+<body>
     <main class="settings_page">
         <div class="settings_content">
             <div class="headline">
@@ -21,12 +21,12 @@
                             <h4>Game themes</h4>
                         </div>
                         <div class="selection__radio_btns">
-                            <label onclick="changeTheme('code_vibes')" from="theme-code_vibes-id" class="radio">
+                            <label id="theme-code-vibes-label-id" from="theme-code_vibes-id" class="radio">
                                 <input id="theme-code_vibes-id" type="radio" name="radio1">
                                 <span class="radio__custom"></span>
                                 <span id="theme-code_vibes-text-id" class="radio__text">Code vibes theme</span>
                             </label>
-                            <label onclick="changeTheme('food')" from="theme_food_id" class="radio">
+                            <label id="theme-food-label-id" from="theme_food_id" class="radio">
                                 <input id="theme-food-id" type="radio" name="radio1">
                                 <span class="radio__custom"></span>
                                 <span id="theme-food-text-id" class="radio__text">Food theme</span>
@@ -39,12 +39,12 @@
                             <h4>Choose player</h4>
                         </div>
                         <div class="selection__radio_btns">
-                            <label onclick="changePlayer('blue')" from="player-blue-id" class="radio">
+                            <label id="player-blue-label-id" from="player-blue-id" class="radio">
                                 <input id="player-blue-id" type="radio" name="radio2">
                                 <span class="radio__custom"></span>
                                 <span id="player-blue-text-id" class="radio__text">Blue</span>
                             </label>
-                            <label onclick="changePlayer('orange')" from="player-orange-id" class="radio">
+                            <label id="player-orange-label-id" from="player-orange-id" class="radio">
                                 <input id="player-orange-id" type="radio" name="radio2">
                                 <span class="radio__custom"></span>
                                 <span id="player-orange-text-id" class="radio__text">Orange</span>
@@ -57,17 +57,17 @@
                             <h4>Board size</h4>
                         </div>
                         <div class="selection__radio_btns">
-                            <label onclick="changeBoardSize(16)" from="board-size-16-id" class="radio">
+                            <label id="board-size-16-label-id" from="board-size-16-id" class="radio">
                                 <input id="board-size-16-id" type="radio" name="radio3">
                                 <span class="radio__custom"></span>
                                 <span id="board-size-16-text-id" class="radio__text">16 cards</span>
                             </label>
-                            <label onclick="changeBoardSize(24)" from="board-size-24-id" class="radio">
+                            <label id="board-size-24-label-id" from="board-size-24-id" class="radio">
                                 <input id="board-size-24-id" type="radio" name="radio3">
                                 <span class="radio__custom"></span>
                                 <span id="board-size-24-text-id" class="radio__text">24 cards</span>
                             </label>
-                            <label onclick="changeBoardSize(36)" from="board-size-36-id" class="radio">
+                            <label id="board-size-36-label-id" from="board-size-36-id" class="radio">
                                 <input id="board-size-36-id" type="radio" name="radio3">
                                 <span class="radio__custom"></span>
                                 <span id="board-size-36-text-id" class="radio__text">36 cards</span>
@@ -85,7 +85,7 @@
                             <img id="slash2-id" src="/assets/img/line_6_slash.png" alt="Yellow slash">
                             <span id="board-size-setting-id">Board size</span>
                         </div>
-                        <a id="start-btn-id" onclick="saveSettings()" class="start_btn start_btn--disabled primary_btn">
+                        <a id="start-btn-id" class="start_btn start_btn--disabled primary_btn">
                             <img class="primary_btn__icon" src="/assets/img/smart_display.png" alt="">
                             <span>Start</span>
                         </a>
@@ -95,5 +95,6 @@
         </div>
     </main>
     <script type="module" src="../main.ts"></script>
+    
 </body>
 </html>

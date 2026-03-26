@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory/Board</title>
-    <script src="../scripts/classes/settings.ts"></script>
+    <script type="module" src="/src/scripts/board.ts"></script>
 </head>
-<body onload="initBoardPage()">
+<body>
     <main class="board_page">
         <div class="board_content">
             <header class="board_header">
@@ -17,20 +17,20 @@
                         <div id="current-player-img-id"></div>
                     </div>
                     <div class="btn_placeholder"></div>
-                    <button id="exit-btn-id" onclick="toggleExitDialog()" class="exit_btn exit_btn--theme">
+                    <button id="exit-btn-id" class="exit_btn exit_btn--theme">
                         <div id="exit-btn-img-id"></div>
                         <span>Exit game</span>
                     </button>
                 </div>
             </header>
-            <div id="board_id" class="board">
+            <div id="board-id" class="board">
             </div>
         </div>
         <div id="exit-dialog-overlay" class="overlay exit_dialog_overlay d_none">
             <div id="exit-dialog-id" class="exit_dialog">
                 <span class="exit_dialog__text">Are your sure you want to quit the game?</span>
                 <div class="exit_dialog__options">
-                    <button onclick="toggleExitDialog()" class="back_to_game_btn">Back to game</button>
+                    <button id="back-to-game-btn" class="back_to_game_btn">Back to game</button>
                     <a class="exit_game_btn" href="/">Exit game</a>
                 </div>
             </div>
