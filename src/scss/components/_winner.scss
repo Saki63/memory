@@ -4,7 +4,7 @@
 @each $theme in maps.$themes {
     body.theme_#{$theme} {
         .winner_overlay{
-            background-color: map.get(maps.$winner_overlay_bgdc, $theme);
+            background-color: map.get(maps.$winner_overlay_bgc, $theme);
             overflow: hidden;
         }
 
@@ -45,7 +45,7 @@
                 margin-top: 24px;
 
                 .winner_img{
-                    background-color: map.get(maps.$home_btn_img_bgdc, $theme);
+                    background-color: map.get(maps.$home_btn_img_bgc, $theme);
                     box-shadow: map.get(maps.$home_btn_img_bxs, $theme);  
                     padding: 24px;
                     margin-bottom: 70px;

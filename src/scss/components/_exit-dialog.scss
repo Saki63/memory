@@ -26,9 +26,9 @@
 
             &__text {
                 text-align: center;
-                font-family: map.get(maps.$exit-dialog-text-ff, $theme);
-                font-size: map.get(maps.$exit-dialog-text-fs, $theme);
-                color: map.get(maps.$exit-dialog-text-fc, $theme);
+                font-family: map.get(maps.$exit_dialog_text_ff, $theme);
+                font-size: map.get(maps.$exit_dialog_text_fs, $theme);
+                color: map.get(maps.$exit_dialog_text_fc, $theme);
             }
 
             &__options{
@@ -36,8 +36,8 @@
                 gap: 16px;
             }
 
-            background-color: map.get(maps.$exit-dialog-bgdc, $theme);
-            border-radius: map.get(maps.$exit-dialog-br, $theme);
+            background-color: map.get(maps.$exit_dialog_bgc, $theme);
+            border-radius: map.get(maps.$exit_dialog_br, $theme);
         }
     }
 }

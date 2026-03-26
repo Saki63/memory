@@ -4,7 +4,7 @@
 @each $theme in maps.$themes {
     body.theme_#{$theme} {
         .game_over_overlay{
-            background-color: map.get(maps.$game_over_overlay_bgdc, $theme);
+            background-color: map.get(maps.$game_over_overlay_bgc, $theme);
         }
 
         .game_over_content{
