@@ -166,7 +166,7 @@ function saveSettings(){
 
 //dom manipulation - settings --------------------------------------------------------------------------------------
 function setThemeCover(theme: Theme){
-    const themeImgRef = document.getElementById('theme_cover');
+    const themeImgRef = document.getElementById('theme-cover');
     if (themeImgRef){
         themeImgRef.setAttribute('src', "/assets/img/theme_cover/"+ theme + ".png");
     }
