@@ -1,0 +1,27 @@
+@use '../utils/maps';
+@use "sass:map";
+
+@each $theme in maps.$themes {
+    body.theme_#{$theme} {
+        .game_over_overlay{
+            background-color: map.get(maps.$game_over_overlay_bgdc, $theme);
+        }
+
+        .game_over_content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+            &__lettering {
+                margin-bottom: 80px;
+            }
+            &__label{
+                color: white;
+
+                font-size: map.get(maps.$game_over_content_fs, $theme);
+                font-family: map.get(maps.$game_over_content_ff, $theme);
+            }
+        }
+    }
+}

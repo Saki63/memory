@@ -26,32 +26,32 @@
             <div id="board_id" class="board">
             </div>
         </div>
-        <div id="exit-dialog-overlay" class="overlay overlay--background d_none">
+        <div id="exit-dialog-overlay" class="overlay exit_dialog_overlay d_none">
             <div id="exit-dialog-id" class="exit_dialog">
-                <span class="text">Are your sure you want to quit the game?</span>
-                <div>
+                <span class="exit_dialog__text">Are your sure you want to quit the game?</span>
+                <div class="exit_dialog__options">
                     <button onclick="toggleExitDialog()" class="back_to_game_btn">Back to game</button>
-                    <a class="exit_link" href="/">Exit game</a>
+                    <a class="exit_game_btn" href="/">Exit game</a>
                 </div>
             </div>
         </div>
         <div id="game-over-overlay" class="overlay game_over_overlay d_none">
             <div class="game_over_content">
-                <img id="game-over-lettering" src="" alt="">
-                <span>Final score</span>
+                <img class="game_over_content__lettering" id="game-over-lettering" src="" alt="">
+                <span class="game_over_content__label">Final score</span>
                 <div id="final-score" class="score"></div>
             </div>
         </div>
         <div id="winner-overlay" class="overlay winner_overlay d_none">
             <div class="winner_content">
-                <img class="confetti" id="confetti-img" src="" alt="">
+                <img class="winner_content__confetti" id="confetti-img" src="" alt="">
                 <span id="start-text">The winner is</span>
                 <h2 id="winner-announcement">-</h2>
-                <div class="img_wrapper">
+                <div class="winner_img_wrapper">
                     <img id="winner-img" class="winner_img" src="" alt="">
                     <img id="tie-img" class="winner_img d_none" src="" alt="">                    
                 </div>
-                <a id="home-btn" href="/">Back to start</a>
+                <a class="home_btn home_btn_style" id="home-btn" href="/">Back to start</a>
             </div>
         </div>
     </main>

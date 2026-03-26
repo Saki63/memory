@@ -33,47 +33,6 @@
     grid-template-columns: auto auto auto auto auto auto;
 }
 
-.card{
-    height: 120px;
-    width: 120px;
-    aspect-ratio: 1 / 1;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    transition: transform 300ms ease-in-out;
-
-    &_inner{
-        position: relative;
-        height: 100%;
-        width: 100%;
-        transform-style: preserve-3d;
-        transition: all 300ms ease-in-out;
-    }
-
-    &_face{
-        position: absolute;
-        inset: 0;
-        backface-visibility: hidden;
-
-        &--back{    
-            transform: rotateY(180deg);
-        }
-    }
-        
-    &.is-flipped .card_inner{
-        transform: rotateY(180deg);
-    }
-
-    *{
-        cursor: pointer;
-    }
-
-    &:hover{
-        transform: scale(1.05);
-    }
-}
-
 .d_none{
     display: none !important;
 }
@@ -83,21 +42,13 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    inset: 0;
 
     width: 100%;
     max-width: 100vw;
 
     height: 100vh;
     max-height: 100%;
-
-    &--background{
-        animation: 750ms linear easeInBackgroundColorOverlay;
-        animation-fill-mode: forwards;
-    }
 }
 
 @each $theme in maps.$themes {
@@ -116,170 +67,5 @@
 
             background-color: map.get(maps.$page-bgdc, $theme);
         }
-
-        .game_over_overlay{
-            background-color: map.get(maps.$game_over_overlay_bgdc, $theme);
-        }
-
-        .game_over_content{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 26px;
-            >img{
-                margin-bottom: 80px;
-            }
-            >span{
-                color: white;
-
-                font-size: map.get(maps.$game_over_content_fs, $theme);
-                font-family: map.get(maps.$game_over_content_ff, $theme);
-            }
-        }
-
-        .winner_overlay{
-            background-color: map.get(maps.$winner_overlay_bgdc, $theme);
-            overflow: hidden;
-        }
-
-        .winner_content{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0px;
-            position: relative;
-            padding-top: map.get(maps.$home_btn_p, $theme);
-
-            .confetti{
-                position: absolute;
-                top: -200px;
-                overflow: hidden;
-            }
-
-            >span{
-                color: map.get(maps.$winner_content_fc, $theme);
-                font-size: map.get(maps.$winner_content_fs, $theme);
-                font-family: map.get(maps.$game_over_content_ff, $theme);
-            }
-            >h2{
-                text-transform: capitalize;
-                color: map.get(maps.$winner_lettering_fc, $theme);
-                font-size: map.get(maps.$winner_lettering_fs, $theme);
-                font-family: map.get(maps.$winner_lettering_ff, $theme);
-                margin-bottom: 70px;
-            }
-            .winner_img{
-                background-color: map.get(maps.$home_btn_img_bgdc, $theme);
-                box-shadow: map.get(maps.$home_btn_img_bxs, $theme);  
-                padding: 24px;
-                margin-bottom: 70px;
-            }
-            >a{
-                display: flex;
-                gap: 8px;
-                align-items: center;
-                justify-content: center;
-                padding: 16px;
-                cursor: pointer;
-
-                border: map.get(maps.$exit-btn-b, $theme);
-                border-radius: map.get(maps.$exit-btn-br, $theme);
-                color: map.get(maps.$home_btn_fc, $theme);
-                font-family: map.get(maps.$exit-btn-ff, $theme);
-                font-size: map.get(maps.$exit-btn-fs, $theme);
-                background-color: map.get(maps.$home_btn_bgdc, $theme);
-
-                box-shadow: map.get(maps.$home_btn_bxs, $theme);
-                transition: transform 0.5s;
-
-                >div {
-                    display: contents;
-                }
-
-                &:hover{
-                    transform: scale(1.10);
-                }
-            }
-
-            .img_wrapper{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 24px;
-                margin-top: 24px;
-            }
-        }
-
-        .exit_dialog{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 32px 24px;
-            max-width: 536px;
-            gap: 40px;
-            
-            animation-delay: 2s;
-            animation: 750ms ease-in easeInDialog;
-            animation-fill-mode: forwards;
-
-            opacity: 0;
-            transform: translateY(100px);
-
-            .text {
-                text-align: center;
-                font-family: map.get(maps.$exit-dialog-text-ff, $theme);
-                font-size: map.get(maps.$exit-dialog-text-fs, $theme);
-                color: map.get(maps.$exit-dialog-text-fc, $theme);
-            }
-
-            >div{
-                display: flex;
-                gap: 16px;
-            }
-
-            background-color: map.get(maps.$exit-dialog-bgdc, $theme);
-            border-radius: map.get(maps.$exit-dialog-br, $theme);
-        }
-
-
-        .back_to_game_btn{
-            padding: 16px;
-            font-family: map.get(maps.$back-to-game-ff, $theme);
-            font-size: map.get(maps.$back-to-game-fs, $theme);
-            color: map.get(maps.$back-to-game-fc, $theme);
-            background-color: map.get(maps.$back-to-game-bgdc, $theme);
-            border: map.get(maps.$back-to-game-b, $theme);
-            border-radius: map.get(maps.$back-to-game-br, $theme);
-
-            &:hover{
-                background-color: map.get(maps.$back-to-game-hover-bgdc, $theme);
-            }
-        }
-
-        .exit_link{
-            padding: 16px;
-            font-family: map.get(maps.$exit-link-ff, $theme);
-            font-size: map.get(maps.$exit-link-fs, $theme);
-            color: map.get(maps.$exit-link-fc, $theme);
-            background-color: map.get(maps.$exit-link-bgdc, $theme);
-            border: map.get(maps.$exit-link-bs, $theme) solid map.get(maps.$exit-link-bc, $theme);
-            border-radius: map.get(maps.$exit-link-br, $theme);
-
-            &:hover{
-                background-color: map.get(maps.$exit-link-hover-bgdc, $theme);
-                // color: map.get(maps.$back-to-game-fc, $theme);
-            }
-        }
     }
-}
-
-@keyframes easeInDialog {
-    100% {opacity: 1; transform: translateY(0px);}
-}
-
-@keyframes easeInBackgroundColorOverlay {
-    100% {background-color: rgba(0, 0, 0, 0.5);}
 }

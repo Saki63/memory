@@ -2,6 +2,10 @@
 @use './components/links-and-buttons';
 @use './components/headline';
 @use './components/score';
+@use './components/card';
+@use './components/exit-dialog';
+@use './components/game-over';
+@use './components/winner';
 @use './components/header';
 @use './pages/board';
 @use './pages/settings';

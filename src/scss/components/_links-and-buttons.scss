@@ -70,6 +70,20 @@
     margin: 16px;
 }
 
+.home_btn{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    &:hover{
+        transform: scale(1.10);
+    }
+}
+
 @each $theme in maps.$themes {
     body.theme_#{$theme} {
         .exit_btn--theme{
@@ -89,6 +103,45 @@
                 color: #FFFF;
                 background-color: map.get(maps.$exit-btn-hover-bgdc, $theme);
             }
+        }
+    
+        .back_to_game_btn{
+            padding: 16px;
+            font-family: map.get(maps.$back-to-game-ff, $theme);
+            font-size: map.get(maps.$back-to-game-fs, $theme);
+            color: map.get(maps.$back-to-game-fc, $theme);
+            background-color: map.get(maps.$back-to-game-bgdc, $theme);
+            border: map.get(maps.$back-to-game-b, $theme);
+            border-radius: map.get(maps.$back-to-game-br, $theme);
+
+            &:hover{
+                background-color: map.get(maps.$back-to-game-hover-bgdc, $theme);
+            }
+        }
+
+        .exit_game_btn{
+            padding: 16px;
+            font-family: map.get(maps.$exit-link-ff, $theme);
+            font-size: map.get(maps.$exit-link-fs, $theme);
+            color: map.get(maps.$exit-link-fc, $theme);
+            background-color: map.get(maps.$exit-link-bgdc, $theme);
+            border: map.get(maps.$exit-link-bs, $theme) solid map.get(maps.$exit-link-bc, $theme);
+            border-radius: map.get(maps.$exit-link-br, $theme);
+
+            &:hover{
+                background-color: map.get(maps.$exit-link-hover-bgdc, $theme);
+            }
+        }
+
+        .home_btn_style{
+            border: map.get(maps.$exit-btn-b, $theme);
+            border-radius: map.get(maps.$exit-btn-br, $theme);
+            color: map.get(maps.$home_btn_fc, $theme);
+            font-family: map.get(maps.$exit-btn-ff, $theme);
+            font-size: map.get(maps.$exit-btn-fs, $theme);
+            background-color: map.get(maps.$home_btn_bgdc, $theme);
+
+            box-shadow: map.get(maps.$home_btn_bxs, $theme);
         }
     }
 }
