@@ -125,7 +125,7 @@
             font-size: map.get(maps.$exit_link_fs, $theme);
             color: map.get(maps.$exit_link_fc, $theme);
             background-color: map.get(maps.$exit_link_bgc, $theme);
-            border: map.get(maps.$exit_link_bs, $theme) solid map.get(maps.$exit_link_bc, $theme);
+            border: map.get(maps.$exit_link_b, $theme);
             border-radius: map.get(maps.$exit_link_br, $theme);
 
             &:hover{

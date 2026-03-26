@@ -273,18 +273,11 @@ $exit_link_bgc: (
   food: rgba(255, 249, 242, 1)
 );
 
-$exit_link_bs: (
-  code_vibes: 2px,
-  gaming: 2px,
-  projects: 0px,
-  food: 3px
-);
-
-$exit_link_bc: (
-  code_vibes: #66CFBC,
-  gaming: #E71C4F,
-  projects: #FD8A81,
-  food: #F3832D
+$exit_link_b: (
+  code_vibes: 2px solid #66CFBC,
+  gaming: 2px solid #E71C4F,
+  projects: 0px solid #FD8A81,
+  food: 3px solid #F3832D
 );
 
 $exit_link_br: (
