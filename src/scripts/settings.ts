@@ -104,20 +104,6 @@ function setThemeCover(theme: Theme){
     }
 }
 
-// function setSettings(settingTheme: string, settingPlayer: string, settingBoardSize: string){
-//     setSetting(themeTypes, "theme", settingTheme)
-//     setSetting(playerTypes, "player", settingPlayer)
-//     setSetting(boardSizeTypes, "board-size", settingBoardSize)
-// }
-
-// function setSetting(settingTypes: string[], setting: string, selection: string | undefined){
-//     for (const settingType of settingTypes){
-//         const id = setting  + "-" + settingType + "-id";
-//         const inputRef = document.getElementById(id) as HTMLInputElement; 
-//         inputRef.checked = selection === settingType ? true : false;
-//     }
-// }
-
 function setSettingOverview(htmlId: string, setting: 'theme' | 'player' | 'board-size'){
     const settingRef = document.getElementById(htmlId);
     
