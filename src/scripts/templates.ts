@@ -1,5 +1,12 @@
 import type {Theme, Player} from './utils';
 
+/**
+ * 
+ * @param player - Player of the game
+ * @param theme - Theme of the Game
+ * @param finalId - Html element id
+ * @returns Html element to display the score of the player
+ */
 export function getScoreOfPlayerTemplate(player: Player, theme: Theme, finalId:string){
     return `
             <div id="${finalId}${player}-player-id" class="score__player score__player--${player}">
@@ -9,6 +16,12 @@ export function getScoreOfPlayerTemplate(player: Player, theme: Theme, finalId:s
             `;
 }
 
+/**
+ * Returns the player icon for the code vibes theme
+ * 
+ * @param playerColorHex - Color code of the player
+ * @returns SVG element containing the player icon
+ */
 export function getCurrentPlayerImgCodeVibesTemplate(playerColorHex: string){
     return `<svg width="29" height="24" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2.97436 24C2.15641 24 1.4562 23.7063 0.873718 23.1188C0.291239 22.5312 0 21.825 0 21V3C0 2.175 0.291239 1.46875 0.873718 0.88125C1.4562 0.29375 2.15641 0 2.97436 0H19.3333C19.8043 0 20.2504 0.10625 20.6718 0.31875C21.0932 0.53125 21.4402 0.825 21.7128 1.2L28.4051 10.2C28.8017 10.725 29 11.325 29 12C29 12.675 28.8017 13.275 28.4051 13.8L21.7128 22.8C21.4402 23.175 21.0932 23.4688 20.6718 23.6813C20.2504 23.8938 19.8043 24 19.3333 24H2.97436Z" 
@@ -16,6 +29,12 @@ export function getCurrentPlayerImgCodeVibesTemplate(playerColorHex: string){
             </svg>`;
 }
 
+/**
+ * Returns the player icon for the food theme
+ * 
+ * @param playerColorHex - Color code of the player
+ * @returns SVG element containing the player icon
+ */
 export function getCurrentPlayerImgFoodTemplate(playerColorHex: string){
     return `<svg width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="41" height="40" rx="8" fill="${playerColorHex}"/>
@@ -24,6 +43,10 @@ export function getCurrentPlayerImgFoodTemplate(playerColorHex: string){
             </svg>`;
 }
 
+/**
+ * 
+ * @returns SVG element containing the exit icon for the code vibes theme
+ */
 export function getExitBtnImgCodeVibesTemplate(){
     return `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_5433_1271" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
@@ -35,6 +58,10 @@ export function getExitBtnImgCodeVibesTemplate(){
             </svg>`;
 }
 
+/**
+ * 
+ * @returns SVG element containing the exit icon for the food theme
+ */
 export function getExitBtnImgFoodTemplate(){
     return `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_5433_3357" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="22" height="22">
@@ -59,6 +86,11 @@ export function getExitBtnImgFoodTemplate(){
             </svg>`;
 }
 
+
+/**
+ * 
+ * @returns SVG element containing the exit icon during hovering for the code vibes theme
+ */
 export function getExitBtnHoverImgCodeVibesTemplate(){
     return `<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <mask id="mask0_5433_1271" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
@@ -70,6 +102,11 @@ export function getExitBtnHoverImgCodeVibesTemplate(){
             </svg>`;
 }
 
+
+/**
+ * 
+ * @returns SVG element containing the exit icon during hovering for the code vibes theme
+ */
 export function getExitBtnHoverImgFoodTemplate(){
     return `<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_2230_3767)">
@@ -114,6 +151,14 @@ export function getExitBtnHoverImgFoodTemplate(){
             </svg>`;
 }
 
+
+/**
+ * 
+ * @param cardIdx - Index of the card
+ * @param theme - Theme of the game
+ * @param cards - Array with all card numbers
+ * @returns HTML element that displays one card depending on the cardIdx
+ */
 export function cardTemplate(cardIdx: number, theme: Theme, cards: number[]){
     return `<button class="card" id="card-${cardIdx}-id">
                 <div class="card_inner">

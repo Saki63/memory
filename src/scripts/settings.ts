@@ -6,11 +6,18 @@ let settings: Settings | undefined = undefined;
 window.addEventListener("load", initSettingsPage);
 window.addEventListener("beforeunload", clearAllCheckbox);
 
+/**
+ * Initializes the settings page by creating a new Settings instance
+ * and registering all required event listeners.
+ */
 export function initSettingsPage(){
     settings = new Settings();
     addAllListeners();
 }
 
+/**
+ * Registers all event listeners for the settings (theme, player, board size, start button).
+ */
 function addAllListeners(){
     addThemeSettingListener();
     addPlayerSettingListener();
@@ -18,6 +25,10 @@ function addAllListeners(){
     addStartBtnListener();
 }
 
+/**
+ * Adds click listeners for selecting the theme.
+ * Currently supports "code_vibes" and "food".
+ */
 function addThemeSettingListener(){
     const themeCodeVibesLabel = document.getElementById('theme-code-vibes-label-id');
     const themeFoodLabel = document.getElementById('theme-food-label-id');
@@ -27,6 +38,10 @@ function addThemeSettingListener(){
     }
 }
 
+/**
+ * Adds click listeners for selecting the player.
+ * Currently supports "blue" and "orange".
+ */ 
 function addPlayerSettingListener(){
     const playerBlueLabel = document.getElementById('player-blue-label-id');
     const playerOrangeLabel = document.getElementById('player-orange-label-id');
@@ -36,6 +51,10 @@ function addPlayerSettingListener(){
     }
 }
 
+/**
+ * Adds click listeners for selecting the board size.
+ * Supports sizes 16, 24, and 36.
+ */
 function addBoardSizeSettingListener(){
     const boardSize16Label = document.getElementById('board-size-16-label-id');
     const boardSize24Label = document.getElementById('board-size-24-label-id');
@@ -47,6 +66,10 @@ function addBoardSizeSettingListener(){
     }
 }
 
+/**
+ * Adds a click listener to the start button
+ * which triggers saving the current settings.
+ */
 function addStartBtnListener(){
     const startBtn = document.getElementById('start-btn-id');
     if (startBtn) {
@@ -54,6 +77,9 @@ function addStartBtnListener(){
     }
 }
 
+/**
+ * Clears all selected checkboxes based on the current settings state.
+ */
 function clearAllCheckbox(){
     if (settings){
         clearCheckbox('theme', settings.getTheme());
@@ -62,6 +88,12 @@ function clearAllCheckbox(){
     }
 }
 
+/**
+ * Unchecks a specific checkbox based on the setting type and value.
+ *
+ * @param setting - The type of setting (theme, player, or board-size)
+ * @param radio - The currently selected value to be unchecked
+ */
 function clearCheckbox(setting: 'theme' | 'player' | 'board-size', radio: string){
     const htmlId = setting + '-' + radio + "-id";
     const radioBtnRef = document.getElementById(htmlId) as HTMLInputElement;
@@ -70,6 +102,12 @@ function clearCheckbox(setting: 'theme' | 'player' | 'board-size', radio: string
     }
 }
 
+/**
+ * Updates the selected theme, refreshes the UI,
+ * updates the preview, and disables the start button if necessary.
+ *
+ * @param theme - The theme to be applied
+ */
 function changeTheme(theme: Theme){
     settings?.setTheme(theme);
     setThemeCover(theme);
@@ -77,18 +115,32 @@ function changeTheme(theme: Theme){
     disableButton();
 }
 
+/**
+ * Updates the selected player and refreshes the UI.
+ *
+ * @param player - The player to be selected
+ */
 function changePlayer(player: Player){
     settings?.setPlayer(player);
     setSettingOverview('player-setting-id', 'player');
     disableButton();
 }
 
+/**
+ * Updates the board size and refreshes the UI accordingly.
+ *
+ * @param boardSize - The new board size
+ */
 function changeBoardSize(boardSize: BoardSize){
     settings?.setBoardSize(boardSize);
     setSettingOverview('board-size-setting-id', 'board-size');
     disableButton();
 }
 
+/**
+ * Saves the current settings to storage.
+ * If all settings are configured, enables navigation to the game board page.
+ */
 function saveSettings(){
     settings?.writeStorage();
     if(settings?.isAllSet()){
@@ -97,6 +149,11 @@ function saveSettings(){
     }
 }
 
+/**
+ * Updates the theme preview image based on the selected theme.
+ *
+ * @param theme - The currently selected theme
+ */
 function setThemeCover(theme: Theme){
     const themeImgRef = document.getElementById('theme-cover');
     if (themeImgRef){
@@ -104,6 +161,12 @@ function setThemeCover(theme: Theme){
     }
 }
 
+/**
+ * Updates the UI display for a selected setting.
+ *
+ * @param htmlId - The ID of the HTML element to update
+ * @param setting - The type of setting (theme, player, or board-size)
+ */
 function setSettingOverview(htmlId: string, setting: 'theme' | 'player' | 'board-size'){
     const settingRef = document.getElementById(htmlId);
     
@@ -127,6 +190,10 @@ function setSettingOverview(htmlId: string, setting: 'theme' | 'player' | 'board
     }
 }
 
+/**
+ * Enables the start button when all settings are set
+ * and updates its visual state.
+ */
 function disableButton(){
     if(settings?.isAllSet()){
         document.getElementById('start-btn-id')?.classList.remove('start_btn--disabled');
