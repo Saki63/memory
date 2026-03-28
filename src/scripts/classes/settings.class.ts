@@ -1,5 +1,5 @@
 import type {Theme, Player, BoardSize} from '../utils';
-import {themeTypes, playerTypes, boardSizeTypes} from '../utils';
+import {THEMES, PLAYERS, BOARD_SIZES} from '../utils';
 
 /**
  * Represents the application settings including theme, player, and board size.
@@ -112,7 +112,7 @@ export class Settings{
      */
     readStorageTheme(){
         const storageTheme = sessionStorage.getItem('memory_setting_theme');
-        if (storageTheme && themeTypes.includes(storageTheme)) this.theme = storageTheme as Theme;
+        if (storageTheme && THEMES.includes(storageTheme)) this.theme = storageTheme as Theme;
     }
 
     /**
@@ -120,7 +120,7 @@ export class Settings{
      */
     readStoragePlayer(){
         const storagePlayer = sessionStorage.getItem('memory_setting_player');
-        if (storagePlayer && playerTypes.includes(storagePlayer)) this.player = storagePlayer as Player;
+        if (storagePlayer && PLAYERS.includes(storagePlayer)) this.player = storagePlayer as Player;
     }
 
     /**
@@ -128,7 +128,7 @@ export class Settings{
      */
     readStorageBoardSize(){
         const storageBoardSize = sessionStorage.getItem('memory_setting_boardSize');
-        if (storageBoardSize && boardSizeTypes.includes(storageBoardSize)) this.boardSize = storageBoardSize as BoardSize;
+        if (storageBoardSize && BOARD_SIZES.includes(storageBoardSize)) this.boardSize = storageBoardSize as BoardSize;
     }
 
     /**

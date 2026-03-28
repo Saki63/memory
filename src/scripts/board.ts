@@ -395,10 +395,10 @@ export function announceDrawInOverlay(firstPlayer: Player, secondPlayer: Player)
     if (winnerRef) winnerRef.classList.toggle("d_none");
 
     const firstImgRef = document.getElementById('winner-img') as HTMLImageElement;
-    if (firstImgRef) firstImgRef.src = "/assets/img/winners/chess_pawn_" + firstPlayer +".png";
+    if (firstImgRef) firstImgRef.src = "/assets/img/winners/chess-pawn-" + firstPlayer +".png";
 
     const secondImgRef = document.getElementById('tie-img') as HTMLImageElement;
-    if (secondImgRef) secondImgRef.src = "/assets/img/winners/chess_pawn_" + secondPlayer + ".png";
+    if (secondImgRef) secondImgRef.src = "/assets/img/winners/chess-pawn-" + secondPlayer + ".png";
     secondImgRef.classList.toggle("d_none");
 }
 
@@ -412,7 +412,7 @@ export function announceWinnerInOverlay(player: Player){
     if (winnerRef) winnerRef.innerText = player + " Player";
 
     const winnerImgRef = document.getElementById('winner-img') as HTMLImageElement;
-    if (winnerImgRef) winnerImgRef.src = "/assets/img/winners/chess_pawn_" + player + ".png";
+    if (winnerImgRef) winnerImgRef.src = "/assets/img/winners/chess-pawn-" + player + ".png";
 }
 
 /**

@@ -2,12 +2,12 @@ export type Theme = 'code_vibes' | 'food';
 export type Player = 'blue' | 'orange';
 export type BoardSize = '16' | '24' | '36';
 
-export const themeTypes = ['code_vibes', 'food'];
-export const playerTypes = ['blue', 'orange'];
-export const boardSizeTypes = ['16', '24', '36'];
+export const THEMES = ['code_vibes', 'food'];
+export const PLAYERS = ['blue', 'orange'];
+export const BOARD_SIZES = ['16', '24', '36'];
 
-const colorBlueHex = '#097FC5';
-const colorOrangeHex = '#F58E39';
+const COLOR_BLUE_HEX = '#097FC5';
+const COLOR_ORANGE_HEX = '#F58E39';
 
 /**
  * Retruns the second player.
@@ -29,10 +29,10 @@ export function getPlayerColor(player: Player){
     let color = '#0000';
     switch (player){
         case 'blue':
-            color = colorBlueHex;
+            color = COLOR_BLUE_HEX;
             break;
         case 'orange':
-            color = colorOrangeHex;
+            color = COLOR_ORANGE_HEX;
             break;
         default:
             console.error("This player color is missing!");

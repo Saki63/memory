@@ -208,7 +208,7 @@ function disableButton(){
         document.getElementById('start-btn-id')?.classList.remove('start_btn--disabled');
         const slash1Ref = document.getElementById('slash1-id') as HTMLImageElement;
         const slash2Ref = document.getElementById('slash2-id') as HTMLImageElement;
-        slash1Ref.src = "/assets/img/line_3_obliquely.png";
-        slash2Ref.src = "/assets/img/line_3_obliquely.png";
+        slash1Ref.src = "/assets/img/line-3-obliquely.png";
+        slash2Ref.src = "/assets/img/line-3-obliquely.png";
     }
 }
