@@ -161,7 +161,7 @@ export function getExitBtnHoverImgFoodTemplate(){
  */
 export function cardTemplate(cardIdx: number, theme: Theme, cards: number[]){
     return `<button class="card" id="card-${cardIdx}-id">
-                <div class="card_inner">
+                <div id="card-inner-${cardIdx}-id" class="card_inner">
                     <div class="card_face">
                         <img src="/assets/img/cards/${theme}/back.png"/>
                     </div>

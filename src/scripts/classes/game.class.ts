@@ -4,7 +4,8 @@ import { setScoreOfPlayer,
     announceDrawInOverlay,
     announceWinnerInOverlay,
     toggleOverlay,
-    displayCurrentPlayer
+    displayCurrentPlayer,
+    matchedCardDesign
  } from '../board';
 
  /**
@@ -77,7 +78,9 @@ export class Game{
     openCard(cardIdx: number){
         this.currentCards.push(cardIdx);
         if(this.currentCards.length % 2 === 0){            
-            if(this.checkCardsForEquality()){                
+            if(this.checkCardsForEquality()){     
+                matchedCardDesign(this.currentCards[this.currentCards.length -1]);
+                matchedCardDesign(this.currentCards[this.currentCards.length -2]);
                 this.increaseScore();
                 if(this.isEndOfGame()){
                     this.gameEnding();

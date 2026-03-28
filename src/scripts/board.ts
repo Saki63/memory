@@ -310,6 +310,20 @@ function addCardListener(game: Game){
 }
 
 /**
+ * Changes the design of a card.
+ *
+ * @param cardIdx - Index of the card that changes the design
+ */
+export function matchedCardDesign(cardIdx: number){
+    const cardRef = document.getElementById('card-' + cardIdx + '-id') as HTMLButtonElement;
+    const cardInnerRef = document.getElementById('card-inner-' + cardIdx + '-id');
+    if (cardRef && cardInnerRef){
+        cardInnerRef.classList.add('card_inner--match');
+        cardRef.disabled = true;
+    }
+}
+
+/**
  * Extracts the card index from a given HTML element ID.
  *
  * @param htmlId - The ID of the card element
@@ -410,10 +424,3 @@ export function toggleOverlay(overlayId: string){
     const overlayRef = document.getElementById(overlayId);
     if (overlayRef) overlayRef.classList.toggle("d_none");
 }
-
-
-
-
-
-
-

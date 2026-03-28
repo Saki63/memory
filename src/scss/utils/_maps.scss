@@ -398,3 +398,17 @@ $home_btn_p: (
   projects: 0,
   food: 0
 );
+
+$card_match_shadow: (
+  code_vibes: -4px 4px 6px 1px #66cfbc82,
+  gaming: none,
+  projects: none,
+  food: none 
+);
+
+$card_match_b: (
+  code_vibes: 6px solid #66CFBC,
+  gaming: 6px solid #ED1B76,
+  projects: 6px solid #BFE5F2,
+  food: 6px solid #FFAB3E 
+);
