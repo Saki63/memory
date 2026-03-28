@@ -75,36 +75,70 @@ export class Game{
     openCard(cardIdx: number){
         this.currentCards.push(cardIdx);
         if(this.currentCards.length % 2 === 0){            
-            if(this.checkCardsForEquality()){
-                console.log("yey");
-                
-                this.score[this.currentPlayer] += 1;
-                setScoreOfPlayer(this.currentPlayer, this.theme, this.score[this.currentPlayer], '');
+            if(this.checkCardsForEquality()){                
+                this.increaseScore();
                 if(this.isEndOfGame()){
-                    const secondPlayer = this.startPlayer === "blue" ? "orange" : "blue";
-                    setFinalScores(this.startPlayer, secondPlayer, this.score[this.startPlayer], this.score[secondPlayer]);
-                    if (this.isTie()){
-                        announceDrawInOverlay(this.startPlayer, secondPlayer);
-                    } else {
-                        announceWinnerInOverlay(this.currentPlayer);
-                    }
-                    toggleOverlay('game-over-overlay');
-                    setTimeout(() => {
-                        toggleOverlay('game-over-overlay');
-                        toggleOverlay('winner-overlay');
-                    }, 1500);
+                    this.gameEnding();
                 }
             } else {
-                console.log("no");
-                this.waiting = true;
-                setTimeout(()=>{
-                    this.turnAroundCards();
-                    this.currentPlayer = this.currentPlayer === "blue" ? "orange" : "blue";
-                    displayCurrentPlayer(this.currentPlayer, this.theme);   
-                    this.waiting = false;                 
-                }, 1000);
+                this.resetBoardForNextPlayer();
             }
         }
+    }
+
+    /**
+     * Increases the score of the current player and adjust score view
+     */
+    increaseScore(){
+        this.score[this.currentPlayer] += 1;
+        setScoreOfPlayer(this.currentPlayer, this.theme, this.score[this.currentPlayer], '');        
+    }
+
+    /**
+     * Set final score, adjust the overlays and displays them
+     */
+    gameEnding(){
+        const secondPlayer = this.startPlayer === "blue" ? "orange" : "blue";
+        setFinalScores(this.startPlayer, secondPlayer, this.score[this.startPlayer], this.score[secondPlayer]);
+        this.prepareOverlay(secondPlayer);
+        this.displayEndingScreens();
+    }
+
+    /**
+     * Checks if it is a tie and adjust overlay
+     * 
+     * @param secondPlayer - Second player of the game
+     */
+    prepareOverlay(secondPlayer: Player){
+        if (this.isTie()){
+            announceDrawInOverlay(this.startPlayer, secondPlayer);
+        } else {
+            announceWinnerInOverlay(this.currentPlayer);
+        }        
+    }
+
+    /**
+     * Displays the overlays afterwards
+     */
+    displayEndingScreens(){
+        toggleOverlay('game-over-overlay');
+        setTimeout(() => {
+            toggleOverlay('game-over-overlay');
+            toggleOverlay('winner-overlay');
+        }, 1500);        
+    }
+
+    /**
+     * Truns around the cards and displays the next player
+     */
+    resetBoardForNextPlayer(){
+        this.waiting = true;
+        setTimeout(()=>{
+            this.turnAroundCards();
+            this.currentPlayer = this.currentPlayer === "blue" ? "orange" : "blue";
+            displayCurrentPlayer(this.currentPlayer, this.theme);   
+            this.waiting = false;                 
+        }, 1000);
     }
 
     /**

@@ -23,18 +23,51 @@ window.addEventListener("load", initBoardPage);
 function initBoardPage(){
     const settings = new Settings();
     settings.readStorage('all');
+
     const theme = settings.getTheme();
-    themeView(theme);
-    addExitBtnListener(theme);
-    addBackBtnListener(theme);
     const player = settings.getPlayer();
+    const boardSize = settings.getBoardSize();
+
+    const game = new Game(Number(boardSize), player, theme);
+    adjustGameView(theme, player, game)
+}
+
+/**
+ * Views the board depending on the settings (theme, player, game)
+ * 
+ * @param theme - The Theme of the game
+ * @param player - Player of the game
+ * @param game - Game information and logic
+ */
+function adjustGameView(theme: Theme, player: Player, game: Game){
+    themeView(theme);
     displayScore(player, theme);
     displayCurrentPlayer(player, theme);
     displayExitBtnIcon(theme);
-    const boardSize = settings.getBoardSize();
-    const game = new Game(Number(boardSize), player, theme);
     setBoard(theme, game.cards);
+    buildOverlays(theme, player);
+    addListeners(theme, game);    
+}
+
+/**
+ * Add the event listeners
+ * 
+ * @param theme - The theme of the game
+ * @param game - Infomation to the game
+ */
+function addListeners(theme: Theme, game: Game){
+    addExitBtnListener(theme);
+    addBackBtnListener(theme);
     addCardListener(game);
+}
+
+/**
+ * Builds the overlay for the game
+ * 
+ * @param theme - The theme of the game
+ * @param player - Information about the player
+ */
+function buildOverlays(theme: Theme, player: Player){
     displayScore(player, theme, true);
     buildGameOverOverlay(theme);
     buildWinnerOverlay(theme);
@@ -60,13 +93,9 @@ function addExitBtnListener(theme: Theme){
         exitBtnRef.addEventListener("mouseover", e => {
             changeExitIcon(theme, 'hover');
         })
-    }
-    if (exitBtnRef){
         exitBtnRef.addEventListener("mouseleave", e => {
             changeExitIcon(theme, 'default');
         })
-    }
-    if (exitBtnRef){
         exitBtnRef.addEventListener("click", e => {
             document.getElementById('exit-dialog-overlay')?.classList.toggle("d_none");
         })

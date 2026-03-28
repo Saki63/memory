@@ -171,23 +171,32 @@ function setSettingOverview(htmlId: string, setting: 'theme' | 'player' | 'board
     const settingRef = document.getElementById(htmlId);
     
     if (settingRef){
-        switch(setting){
-            case 'theme':
-                const themeTextRef = document.getElementById(`${setting}-${settings?.getTheme()}-text-id`) as HTMLSpanElement;
-                settingRef.innerText = themeTextRef.innerText;
-                break;
-            case 'player':
-                const playerTextRef = document.getElementById(`${setting}-${settings?.getPlayer()}-text-id`) as HTMLSpanElement;
-                settingRef.innerText = playerTextRef.innerText;
-                break;
-            case 'board-size':
-                const boardSizeTextRef = document.getElementById(`${setting}-${settings?.getBoardSize()}-text-id`) as HTMLSpanElement;
-                settingRef.innerText = boardSizeTextRef.innerText;
-                break;
-            default:
-                console.error('Setting not available!');
-        }
+        const text = getSettingText(setting);
+        settingRef.innerText = text ? text : "";
     }
+}
+
+/**
+ * Returns the text for a selected setting.
+ *
+ * @param setting - The type of setting (theme, player, or board-size)
+ */
+function getSettingText(setting: 'theme' | 'player' | 'board-size'){
+    let textRef: HTMLSpanElement | null = null;
+    switch(setting){
+        case 'theme':
+            textRef = document.getElementById(`${setting}-${settings?.getTheme()}-text-id`) as HTMLSpanElement;
+            break;
+        case 'player':
+            textRef = document.getElementById(`${setting}-${settings?.getPlayer()}-text-id`) as HTMLSpanElement;
+            break;
+        case 'board-size':
+            textRef = document.getElementById(`${setting}-${settings?.getBoardSize()}-text-id`) as HTMLSpanElement;
+            break;
+        default:
+            console.error('Setting not available!');
+    }
+    return textRef?.innerHTML;
 }
 
 /**
