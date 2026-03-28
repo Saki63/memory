@@ -59,6 +59,7 @@ function addListeners(theme: Theme, game: Game){
     addExitBtnListener(theme);
     addBackBtnListener(theme);
     addCardListener(game);
+    addDialogOverlayListener();
 }
 
 /**
@@ -98,6 +99,20 @@ function addExitBtnListener(theme: Theme){
         })
         exitBtnRef.addEventListener("click", e => {
             document.getElementById('exit-dialog-overlay')?.classList.toggle("d_none");
+        })
+    }
+}
+
+/**
+ * Adds event listeners to the exit button for hover effects and click behavior.
+ */
+function addDialogOverlayListener(){
+    const exitDialogOverlayRef = document.getElementById('exit-dialog-overlay');
+    if (exitDialogOverlayRef){
+        exitDialogOverlayRef.addEventListener("click", e => {
+            if(e.target === exitDialogOverlayRef){
+                document.getElementById('exit-dialog-overlay')?.classList.toggle("d_none");
+            }
         })
     }
 }
