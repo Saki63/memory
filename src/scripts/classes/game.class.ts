@@ -24,7 +24,7 @@ export class Game{
     theme: Theme;
     boardSize: number;
     currentPlayer: Player;
-    deckOfCards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    deckOfCards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
     cards: number[];
     waiting = false;
     end = false;
@@ -43,6 +43,8 @@ export class Game{
         this.currentPlayer = startPlayer;
         this.cards = [];
         this.theme = theme;
+        console.log(boardSize);
+        console.log(this.deckOfCards.length*2);
         if (boardSize <= this.deckOfCards.length*2)
         {
             this.getRandomCards();
