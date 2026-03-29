@@ -35,6 +35,10 @@ function addThemeSettingListener(){
     if (themeCodeVibesLabel && themeFoodLabel) {
         themeCodeVibesLabel.addEventListener('click', () => changeTheme('code_vibes'));
         themeFoodLabel.addEventListener('click', () => changeTheme('food'));
+        themeCodeVibesLabel.addEventListener('mouseover', () => setThemeCover('code_vibes'));
+        themeFoodLabel.addEventListener('mouseover', () => setThemeCover('food'));
+        themeCodeVibesLabel.addEventListener('mouseleave', () => resetThemeCover('code_vibes'));
+        themeFoodLabel.addEventListener('mouseleave', () => resetThemeCover('food'));
     }
 }
 
@@ -113,6 +117,17 @@ function changeTheme(theme: Theme){
     setThemeCover(theme);
     setSettingOverview('theme-setting-id', 'theme');
     disableButton();
+}
+
+/**
+ * Updates the selected theme, refreshes the UI,
+ * updates the preview, and disables the start button if necessary.
+ *
+ * @param theme - The theme to be applied
+ */
+function resetThemeCover(defaultTheme: Theme){
+    const theme = settings?.getTheme() ? settings?.getTheme() : defaultTheme;
+    setThemeCover(theme);
 }
 
 /**
