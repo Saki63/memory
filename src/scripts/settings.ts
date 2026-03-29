@@ -145,7 +145,7 @@ function saveSettings(){
     settings?.writeStorage();
     if(settings?.isAllSet()){
         const linkRef = document.getElementById('start-btn-id') as HTMLAnchorElement;
-        linkRef.href = "board.html";
+        linkRef.href = "/memory/board.html";
     }
 }
 
@@ -155,9 +155,9 @@ function saveSettings(){
  * @param theme - The currently selected theme
  */
 function setThemeCover(theme: Theme){
-    const themeImgRef = document.getElementById('theme-cover');
+    const themeImgRef = document.getElementById('theme-cover') as HTMLImageElement;
     if (themeImgRef){
-        themeImgRef.setAttribute('src', "/assets/img/theme_cover/"+ theme + ".png");
+        themeImgRef.setAttribute('src', import.meta.env.BASE_URL + "/assets/img/theme_cover/"+ theme + ".png");
     }
 }
 
@@ -208,7 +208,7 @@ function disableButton(){
         document.getElementById('start-btn-id')?.classList.remove('start_btn--disabled');
         const slash1Ref = document.getElementById('slash1-id') as HTMLImageElement;
         const slash2Ref = document.getElementById('slash2-id') as HTMLImageElement;
-        slash1Ref.src = "/assets/img/line-3-obliquely.png";
-        slash2Ref.src = "/assets/img/line-3-obliquely.png";
+        slash1Ref.src = `${import.meta.env.BASE_URL}/assets/img/line-3-obliquely.png`;
+        slash2Ref.src = `${import.meta.env.BASE_URL}/assets/img/line-3-obliquely.png`;
     }
 }

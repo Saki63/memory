@@ -10,7 +10,7 @@ import type {Theme, Player} from './utils';
 export function getScoreOfPlayerTemplate(player: Player, theme: Theme, finalId:string){
     return `
             <div id="${finalId}${player}-player-id" class="score__player score__player--${player}">
-                <img src="${'/assets/img/player-' + player + '-' + theme + '.png'}" alt="first player icon">
+                <img src="${import.meta.env.BASE_URL}assets/img/player-${player}-${theme}.png" alt="first player icon">
                 <span id="${player}-player-${finalId}score-id">-</span>                 
             </div>
             `;
@@ -163,10 +163,10 @@ export function cardTemplate(cardIdx: number, theme: Theme, cards: number[]){
     return `<button class="card" id="card-${cardIdx}-id">
                 <div id="card-inner-${cardIdx}-id" class="card_inner">
                     <div class="card_face">
-                        <img src="/assets/img/cards/${theme}/back.png"/>
+                        <img src="${import.meta.env.BASE_URL}assets/img/cards/${theme}/back.png"/>
                     </div>
                     <div class="card_face card_face--back">
-                        <img src="/assets/img/cards/${theme}/card_${cards[cardIdx]}.png"/>
+                        <img src="${import.meta.env.BASE_URL}assets/img/cards/${theme}/card_${cards[cardIdx]}.png"/>
                     </div>
                 </div>
             </button>`;

@@ -341,7 +341,7 @@ function extractCardIdx(htmlId: string){
  */
 function buildGameOverOverlay(theme: Theme){
     const picRef = document.getElementById('game-over-lettering') as HTMLImageElement;
-    picRef.src = "/assets/img/game-over-" + theme + ".png";
+    picRef.src = import.meta.env.BASE_URL + "/assets/img/game-over-" + theme + ".png";
 }
 
 /**
@@ -351,7 +351,7 @@ function buildGameOverOverlay(theme: Theme){
  */
 function buildWinnerOverlay(theme: Theme){
     const confettiRef = document.getElementById('confetti-img') as HTMLImageElement;
-    confettiRef.src = theme === 'code_vibes' ? "/assets/img/confetti.png" : "";
+    confettiRef.src = theme === 'code_vibes' ? import.meta.env.BASE_URL + "/assets/img/confetti.png" : "";
 
     const homeBtnRef = document.getElementById('home-btn') as HTMLLinkElement;
     homeBtnRef.innerHTML = theme === 'code_vibes' ? "Back to start" : "Home";
@@ -395,10 +395,10 @@ export function announceDrawInOverlay(firstPlayer: Player, secondPlayer: Player)
     if (winnerRef) winnerRef.classList.toggle("d_none");
 
     const firstImgRef = document.getElementById('winner-img') as HTMLImageElement;
-    if (firstImgRef) firstImgRef.src = "/assets/img/winners/chess-pawn-" + firstPlayer +".png";
+    if (firstImgRef) firstImgRef.src = import.meta.env.BASE_URL + "/assets/img/winners/chess-pawn-" + firstPlayer +".png";
 
     const secondImgRef = document.getElementById('tie-img') as HTMLImageElement;
-    if (secondImgRef) secondImgRef.src = "/assets/img/winners/chess-pawn-" + secondPlayer + ".png";
+    if (secondImgRef) secondImgRef.src = import.meta.env.BASE_URL + "/assets/img/winners/chess-pawn-" + secondPlayer + ".png";
     secondImgRef.classList.toggle("d_none");
 }
 
@@ -412,7 +412,7 @@ export function announceWinnerInOverlay(player: Player){
     if (winnerRef) winnerRef.innerText = player + " Player";
 
     const winnerImgRef = document.getElementById('winner-img') as HTMLImageElement;
-    if (winnerImgRef) winnerImgRef.src = "/assets/img/winners/chess-pawn-" + player + ".png";
+    if (winnerImgRef) winnerImgRef.src = import.meta.env.BASE_URL + "/assets/img/winners/chess-pawn-" + player + ".png";
 }
 
 /**
