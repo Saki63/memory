@@ -57,6 +57,18 @@
         border-radius: 50%;
         border: 3px solid cp.$primary-dark;
     }
+
+    &:hover &__custom::after {
+        content: "";
+        height: 8px;
+        width: 8px;
+        top: 50%;
+        left: 50%;
+        border-radius: 50%;
+        background-color: black;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
     
     input:checked + &__custom::after {
         content: "";
@@ -68,6 +80,10 @@
         background-color: black;
         position: absolute;
         transform: translate(-50%, -50%);
+    }
+
+    &:hover::after {
+        opacity: 1;
     }
     
     &:hover &__text {
